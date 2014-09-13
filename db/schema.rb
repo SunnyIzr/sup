@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140912212239) do
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
+    t.string   "username"
     t.integer  "personal_rank"
     t.integer  "mic_style"
     t.integer  "play_style"
