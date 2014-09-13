@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912212239) do
+ActiveRecord::Schema.define(version: 20140913175949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "time_slots", force: true do |t|
+    t.integer "weekday"
+    t.integer "start_hour"
+    t.integer "end_hour"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
