@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140913175949) do
+ActiveRecord::Schema.define(version: 20140913183555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: true do |t|
+    t.integer "user_id"
+    t.integer "time_slot_id"
+  end
 
   create_table "time_slots", force: true do |t|
     t.integer "weekday"
