@@ -12,4 +12,6 @@ describe User do
   it {should validate_uniqueness_of (:username)}
   it {should validate_uniqueness_of (:email)}
   it {should have_many(:time_slots)}
+  it {should have_many(:traits)}
+  it {should have_many(:match_traits)}
 end

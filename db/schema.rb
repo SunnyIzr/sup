@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915171342) do
+ActiveRecord::Schema.define(version: 20140915173009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,28 @@ ActiveRecord::Schema.define(version: 20140915171342) do
     t.integer "time_slot_id"
   end
 
+  create_table "match_attributes", force: true do |t|
+    t.integer "user_id"
+    t.integer "match_trait_id"
+  end
+
+  create_table "match_traits", force: true do |t|
+    t.string "description"
+  end
+
+  create_table "player_attributes", force: true do |t|
+    t.integer "user_id"
+    t.integer "trait_id"
+  end
+
   create_table "time_slots", force: true do |t|
     t.integer "weekday"
     t.integer "start_hour"
     t.integer "end_hour"
+  end
+
+  create_table "traits", force: true do |t|
+    t.string "description"
   end
 
   create_table "users", force: true do |t|

@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :case_sensitive => false
   has_many :availabilities
   has_many :time_slots, through: :availabilities
+  has_many :player_attributes
+  has_many :traits, through: :player_attributes
+  has_many :match_attributes
+  has_many :match_traits, through: :match_attributes
 end
