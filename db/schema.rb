@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140915173009) do
+ActiveRecord::Schema.define(version: 20140915190100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20140915173009) do
     t.integer "time_slot_id"
   end
 
+  create_table "games", force: true do |t|
+    t.string  "title"
+    t.integer "platform_id"
+  end
+
   create_table "match_attributes", force: true do |t|
     t.integer "user_id"
     t.integer "match_trait_id"
@@ -28,6 +33,10 @@ ActiveRecord::Schema.define(version: 20140915173009) do
 
   create_table "match_traits", force: true do |t|
     t.string "description"
+  end
+
+  create_table "platforms", force: true do |t|
+    t.string "name"
   end
 
   create_table "player_attributes", force: true do |t|
@@ -63,9 +72,11 @@ ActiveRecord::Schema.define(version: 20140915173009) do
     t.string   "last_sign_in_ip"
     t.date     "date_of_birth"
     t.string   "postal_code"
+    t.integer  "game_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["game_id"], name: "index_users_on_game_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

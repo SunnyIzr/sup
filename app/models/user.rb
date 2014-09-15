@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :traits, through: :player_attributes
   has_many :match_attributes
   has_many :match_traits, through: :match_attributes
+  belongs_to :game
 end

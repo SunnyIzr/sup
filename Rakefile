@@ -15,9 +15,23 @@ task 'db:seed_traits' => :environment do
   end
 end
 
+desc 'Seed Database with Games'
+task 'db:seed_games' => :environment do
+  CSV.foreach('seeds/platforms.csv') do |row|
+    Platform.create(name: row[0])
+  end
+  CSV.foreach('seeds/games.csv') do |row|
+    platform = Platform.find_by(name: row[1])
+    game = Game.new(title:row[0])
+    game.platform = platform
+    game.save
+  end
+end
+
 desc 'Set Up New Database'
 task 'db:setup' => :environment do
   Rake::Task["db:create"].invoke
   Rake::Task["db:migrate"].invoke
   Rake::Task["db:seed_traits"].invoke
+  Rake::Task["db:seed_games"].invoke
 end
