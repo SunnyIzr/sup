@@ -1,4 +1,4 @@
 class Match < ActiveRecord::Base
-  has_many :matched_users
-  has_many :users, through: :matched_users
+  belongs_to :user
+  belongs_to :matched_user, class_name: 'User', foreign_key: 'matched_user_id'
 end

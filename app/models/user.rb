@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   has_many :match_attributes
   has_many :match_traits, through: :match_attributes
   belongs_to :game
-  has_many :matched_users
-  has_many :matches, through: :matched_users
+  has_many :matches
+  has_many :matched_users, through: :matches
 end

@@ -16,4 +16,5 @@ describe User do
   it {should have_many(:match_traits)}
   it {should belong_to (:game)}
   it {should have_many(:matches)}
+  it {should have_many(:matched_users)}
 end
