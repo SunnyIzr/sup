@@ -16,4 +16,6 @@ class User < ActiveRecord::Base
   belongs_to :game
   has_many :matches
   has_many :matched_users, through: :matches
+  has_many :requested_friend_requests, class_name: 'FriendRequest', foreign_key: 'requester_id'
+  has_many :incoming_friend_requests, class_name: 'FriendRequest', foreign_key: 'recipient_id' 
 end

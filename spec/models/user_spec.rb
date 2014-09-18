@@ -17,4 +17,6 @@ describe User do
   it {should belong_to (:game)}
   it {should have_many(:matches)}
   it {should have_many(:matched_users)}
+  it {should have_many(:requested_friend_requests)}
+  it {should have_many(:incoming_friend_requests)}
 end
