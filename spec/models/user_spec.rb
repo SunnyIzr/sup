@@ -19,4 +19,6 @@ describe User do
   it {should have_many(:matched_users)}
   it {should have_many(:requested_friend_requests)}
   it {should have_many(:incoming_friend_requests)}
+  it {should have_many(:friendships)}
+  it {should have_many(:inverse_friendships)}
 end
