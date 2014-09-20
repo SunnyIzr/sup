@@ -2,8 +2,7 @@ class CreateTimeSlots < ActiveRecord::Migration
   def change
     create_table :time_slots do |t|
       t.integer :weekday
-      t.integer :start_hour
-      t.integer :end_hour
+      t.integer :hour
     end
   end
 end

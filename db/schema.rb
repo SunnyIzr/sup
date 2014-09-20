@@ -64,8 +64,7 @@ ActiveRecord::Schema.define(version: 20140918221550) do
 
   create_table "time_slots", force: true do |t|
     t.integer "weekday"
-    t.integer "start_hour"
-    t.integer "end_hour"
+    t.integer "hour"
   end
 
   create_table "traits", force: true do |t|

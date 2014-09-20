@@ -28,10 +28,20 @@ task 'db:seed_games' => :environment do
   end
 end
 
+desc 'Seed Database with Time Slots'
+task 'db:seed_times' => :environment do
+  0.upto(6) do |weekday|
+    0.upto(23) do |hour|
+      TimeSlot.create(weekday: weekday, hour: hour)
+    end
+  end
+end
+
 desc 'Set Up New Database'
 task 'db:setup' => :environment do
   Rake::Task["db:create"].invoke
   Rake::Task["db:migrate"].invoke
   Rake::Task["db:seed_traits"].invoke
   Rake::Task["db:seed_games"].invoke
+  Rake::Task["db:seed_times"].invoke
 end
