@@ -28,7 +28,7 @@ module MatchAlgo
   end
   
   def get_suitable_pop(user)
-    pop = User.where(game_id: user.game.id)
+    pop = User.where(game_id: user.game.id) - [user]
     pop = cut_prior_matches(user,pop)
     pop = filter_schedule_overlap_min(user,pop)
     pop = filter_trait_min(user,pop)
