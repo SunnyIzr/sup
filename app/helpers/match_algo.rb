@@ -23,8 +23,8 @@ module MatchAlgo
     pop = get_suitable_pop(user)
     ranks = calc_ranks(user,pop)
     matches = calc_weighted_avg_ranks(user,ranks)
-    matches.sort_by!{|match,rank| rank}.reverse!
-    matches.keys[0..2]
+    ranked_matches = matches.sort_by{|match,rank| rank}.reverse!
+    ranked_matches[0..2].map{|user| user[0]}
   end
   
   def get_suitable_pop(user)
@@ -107,7 +107,7 @@ module MatchAlgo
     ranks.each do |match,match_ranks|
       weighted_products = []
       match_ranks.each do |factor,rank|
-        weighted_products << ALGO_WEIGHT[factor] * rank
+        weighted_products << (ALGO_WEIGHT[factor] * rank)
       end
       matches[match] = weighted_products.sum
     end

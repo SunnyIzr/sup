@@ -197,4 +197,78 @@ describe MatchAlgo do
     expect(MatchAlgo.calc_ranks(user1,pop)).to eq(ranks)
   end
   
+  it 'should produce a weighted average ranking for each potentialm match' do
+    user1
+    48.times { FactoryGirl.create(:time_slot)}
+    10.times do |i|
+      Availability.create(user: user1, time_slot: TimeSlot.all[i])
+    end
+    10.times{FactoryGirl.create(:trait)}
+    10.times{FactoryGirl.create(:match_trait)}
+    5.times { |i| PlayerAttribute.create(user: user1, trait: Trait.all[i]) }
+    5.times { |i| MatchAttribute.create(user: user1, match_trait: MatchTrait.all[i]) }
+    
+    CSV.foreach('spec/data/algo_user_data.csv', headers: true) do |row|
+      user = FactoryGirl.create(:user,username: row['username'],date_of_birth: Date.parse(row['date_of_birth']), personal_rank: row['personal_rank'].to_i, play_style: row['play_style'].to_i, mic_style: row['mic_style'].to_i)
+      0.upto(row['common_traits'].to_i-1) do |n|
+        PlayerAttribute.create(user: user, trait: Trait.all[n])
+      end
+      0.upto(row['common_match_traits'].to_i-1) do |n|
+        MatchAttribute.create(user: user, match_trait: MatchTrait.all[n])
+      end
+      0.upto(row['schedule_overlap'].to_i-1) do |n|
+        Availability.create(user: user, time_slot: TimeSlot.all[n])
+      end
+    end
+    weighted_avgs = {}
+    pop = User.all - [user1]
+    ranks = MatchAlgo.calc_ranks(user1,pop)
+    ranks.each do |user, rankings|
+      weighted_ranks = []
+      rankings.each do |factor,rank|
+        weighted_ranks << (rank * MatchAlgo::ALGO_WEIGHT[factor])
+      end
+      weighted_avgs[user] = weighted_ranks.sum
+    end
+    expect(MatchAlgo.calc_weighted_avg_ranks(user1,ranks)).to eq(weighted_avgs)
+  end
+  
+  it 'should produce 3 matches for a specified user' do
+    user1
+    48.times { FactoryGirl.create(:time_slot)}
+    10.times do |i|
+      Availability.create(user: user1, time_slot: TimeSlot.all[i])
+    end
+    10.times{FactoryGirl.create(:trait)}
+    10.times{FactoryGirl.create(:match_trait)}
+    5.times { |i| PlayerAttribute.create(user: user1, trait: Trait.all[i]) }
+    5.times { |i| MatchAttribute.create(user: user1, match_trait: MatchTrait.all[i]) }
+    
+    CSV.foreach('spec/data/algo_user_data.csv', headers: true) do |row|
+      user = FactoryGirl.create(:user,username: row['username'],date_of_birth: Date.parse(row['date_of_birth']), personal_rank: row['personal_rank'].to_i, play_style: row['play_style'].to_i, mic_style: row['mic_style'].to_i)
+      0.upto(row['common_traits'].to_i-1) do |n|
+        PlayerAttribute.create(user: user, trait: Trait.all[n])
+      end
+      0.upto(row['common_match_traits'].to_i-1) do |n|
+        MatchAttribute.create(user: user, match_trait: MatchTrait.all[n])
+      end
+      0.upto(row['schedule_overlap'].to_i-1) do |n|
+        Availability.create(user: user, time_slot: TimeSlot.all[n])
+      end
+    end
+    weighted_avgs = {}
+    pop = MatchAlgo.get_suitable_pop(user1)
+    ranks = MatchAlgo.calc_ranks(user1,pop)
+    ranks.each do |user, rankings|
+      weighted_ranks = []
+      rankings.each do |factor,rank|
+        weighted_ranks << (rank * MatchAlgo::ALGO_WEIGHT[factor])
+      end
+      weighted_avgs[user] = weighted_ranks.sum
+    end
+    users = weighted_avgs.sort_by{|user,rank| rank}.reverse!
+
+    expect(MatchAlgo.run(user1).map{ |user| user.id }).to eq(users[0..2].map{ |user| user[0].id })
+  end
+  
 end
