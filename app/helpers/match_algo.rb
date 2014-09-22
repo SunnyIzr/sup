@@ -57,15 +57,20 @@ module MatchAlgo
     # {match: {schedule_overlap: X, age_diff: X, traits: X, match_traits: X, personal_rank_diff: X, play_style_diff: X, mic_style_diff: X}}
     ranks = {}
     rankers = {}
+    inv_factors = [:age_diff,:personal_rank_diff,:play_style_diff,:mic_style_diff]
     diffs_and_overlaps = calc_diffs_and_overlaps(user,pop)
     
     ALGO_WEIGHT.each do |factor, weight|
-      rankers[factor] = Ranker.new.rank(diffs_and_overlaps[factor].values,1)
+      if inv_factors.include?(factor)
+        rankers[factor] = Ranker.new.rank(diffs_and_overlaps[factor].values)
+      else  
+        rankers[factor] = Ranker.new.rank(diffs_and_overlaps[factor].values,1)
+      end
     end
         
     pop.each do |match|
       match_rank = {}
-      ALGO_WEIGHT.each do |factor, weight|
+      ALGO_WEIGHT.each do |factor, weight| 
         match_rank[factor] = rankers[factor][diffs_and_overlaps[factor][match]]
       end
       ranks[match] = match_rank
@@ -88,7 +93,7 @@ module MatchAlgo
       diffs_and_overlaps[:schedule_overlap][match] = (user.time_slots & match.time_slots).size
       diffs_and_overlaps[:age_diff][match] = (user.date_of_birth - match.date_of_birth).to_i.abs
       diffs_and_overlaps[:traits][match] = (user.traits & match.traits).size
-      diffs_and_overlaps[:match_traits][match] = (user.traits & match.traits).size
+      diffs_and_overlaps[:match_traits][match] = (user.match_traits & match.match_traits).size
       diffs_and_overlaps[:personal_rank_diff][match] = (user.personal_rank - match.personal_rank).abs
       diffs_and_overlaps[:play_style_diff][match] = (user.play_style - match.play_style).abs
       diffs_and_overlaps[:mic_style_diff][match] = (user.mic_style - match.mic_style).abs
