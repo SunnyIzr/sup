@@ -56,30 +56,25 @@ module MatchAlgo
   def calc_ranks(user,pop)
     # {match: {schedule_overlap: X, age_diff: X, traits: X, match_traits: X, personal_rank_diff: X, play_style_diff: X, mic_style_diff: X}}
     ranks = {}
+    rankers = {}
     diffs_and_overlaps = calc_diffs_and_overlaps(user,pop)
-    schedule_overlap_ranker = Ranker.new.rank(diffs_and_overlaps[:schedule_overlap].values,1)
-    age_diff_ranker = Ranker.new.rank(diffs_and_overlaps[:age_diff].values,1)
-    traits_ranker = Ranker.new.rank(diffs_and_overlaps[:traits].values,1)
-    match_traits_ranker = Ranker.new.rank(diffs_and_overlaps[:match_traits].values,1)
-    personal_rank_ranker = Ranker.new.rank(diffs_and_overlaps[:personal_rank].values,1)
-    play_style_ranker = Ranker.new.rank(diffs_and_overlaps[:play_style].values,1)
-    mic_style_ranker = Ranker.new.rank(diffs_and_overlaps[:mic_style].values,1)
+    
+    ALGO_WEIGHT.each do |factor, weight|
+      rankers[factor] = Ranker.new.rank(diffs_and_overlaps[factor].values,1)
+    end
         
     pop.each do |match|
       match_rank = {}
-      match_rank[:schedule_overlap] = schedule_overlap_ranker[diffs_and_overlaps[:schedule_overlap][:match]]
-      match_rank[:age_diff] = age_diff_ranker[diffs_and_overlaps[:age_diff][:match]]
-      match_rank[:traits] = traits_ranker[diffs_and_overlaps[:traits][:match]]
-      match_rank[:match_traits] = match_traits_ranker[diffs_and_overlaps[:match_traits][:match]]
-      match_rank[:personal_rank_diff] = personal_rank_ranker[diffs_and_overlaps[:personal_rank][:match]]
-      match_rank[:play_style_diff] = play_style_ranker[diffs_and_overlaps[:play_style][:match]]
-      match_rank[:mic_style_diff] = mic_style_ranker[diffs_and_overlaps[:mic_style][:match]]
+      ALGO_WEIGHT.each do |factor, weight|
+        match_rank[factor] = rankers[factor][diffs_and_overlaps[factor][match]]
+      end
       ranks[match] = match_rank
     end
     ranks
   end
   
   def calc_diffs_and_overlaps(user,pop)
+    # {:schedule_overlap:{match1: 15, match2: 12, match3: 10...}, age_diff: {match1: X}...}
     diffs_and_overlaps = {
       schedule_overlap: {},
       age_diff: {},
