@@ -56,22 +56,49 @@ module MatchAlgo
   def calc_ranks(user,pop)
     # {match: {schedule_overlap: X, age_diff: X, traits: X, match_traits: X, personal_rank_diff: X, play_style_diff: X, mic_style_diff: X}}
     ranks = {}
+    diffs_and_overlaps = calc_diffs_and_overlaps(user,pop)
+    schedule_overlap_ranker = Ranker.new.rank(diffs_and_overlaps[:schedule_overlap].values,1)
+    age_diff_ranker = Ranker.new.rank(diffs_and_overlaps[:age_diff].values,1)
+    traits_ranker = Ranker.new.rank(diffs_and_overlaps[:traits].values,1)
+    match_traits_ranker = Ranker.new.rank(diffs_and_overlaps[:match_traits].values,1)
+    personal_rank_ranker = Ranker.new.rank(diffs_and_overlaps[:personal_rank].values,1)
+    play_style_ranker = Ranker.new.rank(diffs_and_overlaps[:play_style].values,1)
+    mic_style_ranker = Ranker.new.rank(diffs_and_overlaps[:mic_style].values,1)
+        
     pop.each do |match|
       match_rank = {}
-      match_rank[:schedule_overlap] = 
-      match_rank[:age_diff] =
-      match_rank[:traits] = 
-      match_rank[:match_traits] = 
-      match_rank[:personal_rank_diff] = 
-      match_rank[:play_style_diff] =
-      match_rank[:mic_style_diff] = 
+      match_rank[:schedule_overlap] = schedule_overlap_ranker[diffs_and_overlaps[:schedule_overlap][:match]]
+      match_rank[:age_diff] = age_diff_ranker[diffs_and_overlaps[:age_diff][:match]]
+      match_rank[:traits] = traits_ranker[diffs_and_overlaps[:traits][:match]]
+      match_rank[:match_traits] = match_traits_ranker[diffs_and_overlaps[:match_traits][:match]]
+      match_rank[:personal_rank_diff] = personal_rank_ranker[diffs_and_overlaps[:personal_rank][:match]]
+      match_rank[:play_style_diff] = play_style_ranker[diffs_and_overlaps[:play_style][:match]]
+      match_rank[:mic_style_diff] = mic_style_ranker[diffs_and_overlaps[:mic_style][:match]]
       ranks[match] = match_rank
     end
     ranks
   end
   
-  def rank_schedule_overlap(user,match,pop)
-    
+  def calc_diffs_and_overlaps(user,pop)
+    diffs_and_overlaps = {
+      schedule_overlap: {},
+      age_diff: {},
+      traits: {},
+      match_traits: {},
+      personal_rank_diff: {},
+      play_style_diff: {},
+      mic_style_diff: {}
+    }
+    pop.each do |match|
+      diffs_and_overlaps[:schedule_overlap][match] = (user.time_slots & match.time_slots).size
+      diffs_and_overlaps[:age_diff][match] = (user.date_of_birth - match.date_of_birth).to_i.abs
+      diffs_and_overlaps[:traits][match] = (user.traits & match.traits).size
+      diffs_and_overlaps[:match_traits][match] = (user.traits & match.traits).size
+      diffs_and_overlaps[:personal_rank_diff][match] = (user.personal_rank - match.personal_rank).abs
+      diffs_and_overlaps[:play_style_diff][match] = (user.play_style - match.play_style).abs
+      diffs_and_overlaps[:mic_style_diff][match] = (user.mic_style - match.mic_style).abs
+    end
+    diffs_and_overlaps
   end
   
   def calc_weighted_avg_ranks(user,ranks)
