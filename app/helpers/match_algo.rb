@@ -8,12 +8,13 @@ module MatchAlgo
   MIN_TRAIT_OVERLAP = 1
   MIN_MATCH_TRAIT_OVERLAP = 1
   ALGO_WEIGHT = {
-    :schedule_overlap = 0.1667
-    :age_diff = 0.1667
-    :traits = 0.1667
-    :match_traits = 0.1667
-    :play_style_diff = 0.1666
-    :mic_style_diff = 0.1666
+    schedule_overlap: 0.1428,
+    age_diff: 0.1428,
+    traits: 0.1428,
+    match_traits: 0.1428,
+    personal_rank_diff: 0.1432,
+    play_style_diff: 0.1428,
+    mic_style_diff: 0.1428
   }
   extend self
   
@@ -53,7 +54,7 @@ module MatchAlgo
   end
   
   def calc_ranks(user,pop)
-    # {match: {schedule_overlap: X, age_diff: X, traits: X, match_traits: X, play_style_diff: X, mic_style_diff: X}}
+    # {match: {schedule_overlap: X, age_diff: X, traits: X, match_traits: X, personal_rank_diff: X, play_style_diff: X, mic_style_diff: X}}
     ranks = {}
     pop.each do |match|
       match_rank = {}
@@ -61,6 +62,7 @@ module MatchAlgo
       match_rank[:age_diff] =
       match_rank[:traits] = 
       match_rank[:match_traits] = 
+      match_rank[:personal_rank_diff] = 
       match_rank[:play_style_diff] =
       match_rank[:mic_style_diff] = 
       ranks[match] = match_rank
