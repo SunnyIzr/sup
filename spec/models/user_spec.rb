@@ -14,6 +14,7 @@ describe User do
   it {should have_many(:time_slots)}
   it {should have_many(:traits)}
   it {should have_many(:match_traits)}
+  it {should have_many(:outside_activities)}
   it {should belong_to (:game)}
   it {should have_many(:matches)}
   it {should have_many(:matched_users)}

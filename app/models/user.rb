@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :traits, through: :player_attributes
   has_many :match_attributes
   has_many :match_traits, through: :match_attributes
+  has_many :preferred_activities
+  has_many :outside_activities, through: :preferred_activities
   belongs_to :game
   has_many :matches
   has_many :matched_users, through: :matches

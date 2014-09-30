@@ -5,13 +5,16 @@ require File.expand_path('../config/application', __FILE__)
 
 Sup::Application.load_tasks
 
-desc 'Seed Database with Traits'
+desc 'Seed Database with Traits/Activities'
 task 'db:seed_traits' => :environment do
   CSV.foreach('seeds/traits.csv') do |row|
     Trait.create(description: row[0])
   end
   CSV.foreach('seeds/match_traits.csv') do |row|
     MatchTrait.create(description: row[0])
+  end
+  CSV.foreach('seeds/outside_activities.csv') do |row|
+    OutsideActivity.create(description: row[0])
   end
 end
 
