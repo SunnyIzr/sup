@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-describe SignUpRequest do
+describe SignupRequest do
 end
