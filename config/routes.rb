@@ -3,7 +3,9 @@ Sup::Application.routes.draw do
   root 'static_pages#index'
   
   
-  resources :signup_requests, only: [:show, :create]
+  # SignupRequest
+  resources :signup_requests, only: [:create]
+  get 'signup/:hex_id' => 'signup_requests#show', as: :signup
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
