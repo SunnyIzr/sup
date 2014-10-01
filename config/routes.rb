@@ -1,12 +1,15 @@
 Sup::Application.routes.draw do
-  devise_for :users
   root 'static_pages#index'
   
   
   # SignupRequest
   resources :signup_requests, only: [:create]
   get 'signup/:hex_id' => 'signup_requests#show', as: :signup
-
+  
+  # User
+  devise_for :users
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
