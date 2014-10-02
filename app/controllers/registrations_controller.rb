@@ -1,6 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
    def create
+    p '*'*100
     build_resource(sign_up_params)
+    resource.desc_words = resource.desc_words.split(',')
 
     resource_saved = resource.save
     yield resource if block_given?

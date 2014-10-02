@@ -1,4 +1,5 @@
 Sup::Application.routes.draw do
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   root 'static_pages#index'
   
   
@@ -7,7 +8,6 @@ Sup::Application.routes.draw do
   get 'signup/:hex_id' => 'signup_requests#show', as: :signup
   
   # User
-  devise_for :users
   
   
   # The priority is based upon order of creation: first created -> highest priority.
