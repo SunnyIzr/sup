@@ -44,6 +44,8 @@ gem 'simplecov', :require => false, :group => :test
 gem 'devise'
 
 gem 'foundation-rails'
+
+gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
