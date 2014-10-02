@@ -1,70 +1,90 @@
+<body class='signup-view'>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
   
-<!-- FIRST SCREEN -->
-  
-  <div><%= f.label :game %><br />
-  <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %></div>
-  
-  <!-- Play Schedule -->
-  
-<!-- SECOND SCREEN -->
+   
+  <ul class="signup-orbit" data-orbit>
+    <li data-orbit-slide="headline-1">
+      <div>
+        <div><%= f.label :game %><br />
+        <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %></div>
+        <!-- Play Schedule -->
+      </div>
+    </li>
+    <li data-orbit-slide="headline-2">
+      <div>
+        <div><%= f.label :personal_rank %><br />
+        <div class='slider' data-target='user_personal_rank'></div>
+        <%= f.hidden_field :personal_rank, value: 50 %></div>
+        
+        
+        <div><%= f.label :mic_style %><br />
+        <div class='slider' data-target='user_mic_style'></div>
+        <%= f.hidden_field :mic_style, value: 50 %></div>
+        
+        
+        <div><%= f.label :play_style %><br />
+        <div class='slider' data-target='user_play_style'></div>
+        <%= f.hidden_field :play_style, value: 50 %></div>
+      </div>
+    </li>
+    <li data-orbit-slide="headline-3">
+      <div>
+        <div id='traits' class='tag_checkboxes'><%= f.label :traits %><br />
+        <% Trait.all.each do |trait| %>
+          <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
+          <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
+        <% end %></div>
 
+        <div id='match_traits' class='tag_checkboxes'><%= f.label :match_traits %><br />
+        <% MatchTrait.all.each do |match_trait| %>
+          <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
+          <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
+        <% end %></div>
+      </div>
+    </li>
+    <li data-orbit-slide='headline-4'>
+      <div>
+        <div id='outside_activites' class='tag_checkboxes'><%= f.label :outside_activites %><br />
+        <% OutsideActivity.all.each do |outside_activity| %>
+          <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
+          <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
+        <% end %></div>
+        
+        <div><%= f.label :desc_words %><br />
+        <%= f.text_field :desc_words %></div>  
+        
+      </div>
+    </li>
+    <li data-orbit-slide='headline-5'>
+      <div>
+        <div><%= f.label :gamertag %><br />
+        <%= f.text_field :gamertag %></div>
+        
+        <div><%= f.label :postal_code %><br />
+        <%= f.text_field :postal_code %></div>
+        
+        <div><%= f.label :date_of_birth %><br />
+        <%= f.date_field :date_of_birth %></div>
 
-  
-  <div><%= f.label :personal_rank %><br />
-  <div class='slider' data-target='user_personal_rank'></div>
-  <%= f.hidden_field :personal_rank, value: 50 %></div>
-  
-  
-  <div><%= f.label :mic_style %><br />
-  <div class='slider' data-target='user_mic_style'></div>
-  <%= f.hidden_field :mic_style, value: 50 %></div>
-  
-  
-  <div><%= f.label :play_style %><br />
-  <div class='slider' data-target='user_play_style'></div>
-  <%= f.hidden_field :play_style, value: 50 %></div>
+        <div><%= f.label :occupation %><br />
+        <%= f.text_field :occupation %></div>
+        
+        <div><%= f.label :username %><br />
+        <%= f.text_field :username %></div>
 
-<!-- THIRD SCREEN -->
+        <div><%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <!-- Trait Selection -->
+        <div><%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+        <div><%= f.submit "Sign up" %></div>
+      </div>
+  </ul>
   
-  <!-- MatchTrait Selection -->
-  
-<!-- FOURTH SCREEN -->
-
-  <!-- Outside Activites Selection -->
-  
-  <div><%= f.label :desc_words %><br />
-  <%= f.text_field :desc_words %></div>  
-
-<!-- FIFTH SCREEN -->
-
-  <div><%= f.label :gamertag %><br />
-  <%= f.text_field :gamertag %></div>
-  
-  <div><%= f.label :postal_code %><br />
-  <%= f.text_field :postal_code %></div>
-  
-  <div><%= f.label :date_of_birth %><br />
-  <%= f.date_field :date_of_birth %></div>
-
-  <div><%= f.label :occupation %><br />
-  <%= f.text_field :occupation %></div>
-  
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
-
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.submit "Sign up" %></div>
 <% end %>
-
+</body>

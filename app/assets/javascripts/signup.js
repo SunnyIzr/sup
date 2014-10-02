@@ -1,6 +1,7 @@
 var SignupController = {
   init: function(){
     this.activateSliders();
+    this.activateTagCheckboxes()
   },
   activateSliders: function(){
     $('.slider').slider({
@@ -9,6 +10,9 @@ var SignupController = {
         SignupView.changeHiddenRankInput(this,ui.value)
       }
     })
+  },
+  activateTagCheckboxes: function(){
+   $('.tag_checkboxes').buttonset() 
   }
 }
 
