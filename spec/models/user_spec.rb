@@ -9,6 +9,9 @@ describe User do
   it {should validate_presence_of (:desc_words)}
   it {should validate_presence_of (:date_of_birth)}
   it {should validate_presence_of (:postal_code)}
+  it {should validate_presence_of (:gamertag)}
+  it {should validate_presence_of (:occupation)}
+  it {should validate_presence_of (:game_id)}
   it {should validate_uniqueness_of (:username)}
   it {should validate_uniqueness_of (:email)}
   it {should have_many(:time_slots)}

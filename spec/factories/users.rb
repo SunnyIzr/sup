@@ -10,5 +10,7 @@ FactoryGirl.define do
     postal_code {'10001'}
     password {'password'}
     game {Game.last.nil? ? FactoryGirl.create(:game) : Game.last}
+    gamertag {'johnnyd'}
+    occupation {'Finance'}
   end
 end
