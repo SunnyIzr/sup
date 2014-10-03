@@ -1,13 +1,12 @@
 Sup::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => 'registrations' }
   root 'static_pages#index'
   
   
   # SignupRequest
-  resources :signup_requests, only: [:create]
-  get 'signup/:hex_id' => 'signup_requests#show', as: :signup
+  resources :signup_requests, only: [:create]  
   
   # User
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   
   
   # The priority is based upon order of creation: first created -> highest priority.
