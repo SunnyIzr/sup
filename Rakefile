@@ -40,6 +40,30 @@ task 'db:seed_times' => :environment do
   end
 end
 
+desc 'Seed Database with Users'
+task 'db:seed_users' => :environment do
+  100.times do
+    u = User.new
+    u.username = Faker::Internet.user_name
+    u.email = Faker::Internet.email
+    u.personal_rank = Random.rand(101)
+    u.mic_style = Random.rand(101)
+    u.play_style = Random.rand(101)
+    u.desc_words = 3.times.map{ Faker::Lorem.word }
+    u.date_of_birth = Faker::Date.birthday
+    u.postal_code = Faker::Address.zip_code
+    u.password = Faker::Internet.password
+    u.gamertag = Faker::Internet.user_name
+    u.occupation = Faker::Company.catch_phrase
+    u.game_id = Random.rand(5) + 1
+    u.trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
+    u.match_trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
+    u.outside_activity_ids = [*1..20].shuffle[0..(Random.rand(10) + 1)]
+    u.time_slot_ids = [*1..50].shuffle[0..25]
+    u.save
+  end
+end
+
 desc 'Set Up New Database'
 task 'db:setup' => :environment do
   Rake::Task["db:create"].invoke
@@ -47,4 +71,5 @@ task 'db:setup' => :environment do
   Rake::Task["db:seed_traits"].invoke
   Rake::Task["db:seed_games"].invoke
   Rake::Task["db:seed_times"].invoke
+  Rake::Task["db:seed_users"].invoke
 end

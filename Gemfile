@@ -37,6 +37,7 @@ group :test, :development do
   gem 'shoulda'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 gem 'simplecov', :require => false, :group => :test
