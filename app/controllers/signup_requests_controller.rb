@@ -1,11 +1,11 @@
 class SignupRequestsController < ApplicationController
   def create
-    @signup_request = SignupRequest.generate_new(params[:signup_request][:email])
-    redirect_to signup_path(@signup_request.hex_id)
+    @signup_request = SignupRequest.generate_new(signup_request_params[:email])
+    render json: 'success'
   end
   
   private
   def signup_request_params
-    params.permit(:signup_request).permit(:email)
+    params.require(:signup_request).permit(:email)
   end
 end
