@@ -42,7 +42,7 @@ end
 
 desc 'Seed Database with Users'
 task 'db:seed_users' => :environment do
-  100.times do
+  10000.times do
     u = User.new
     u.username = Faker::Internet.user_name
     u.email = Faker::Internet.email
@@ -55,11 +55,11 @@ task 'db:seed_users' => :environment do
     u.password = Faker::Internet.password
     u.gamertag = Faker::Internet.user_name
     u.occupation = Faker::Company.catch_phrase
-    u.game_id = Random.rand(5) + 1
+    u.game_id = Game.limit(1).order("RANDOM()").first
     u.trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
     u.match_trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
     u.outside_activity_ids = [*1..20].shuffle[0..(Random.rand(10) + 1)]
-    u.time_slot_ids = [*1..50].shuffle[0..25]
+    u.time_slot_ids = [*1..168].shuffle[0..25]
     u.save
   end
 end
