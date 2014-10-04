@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += ['jquery-ui.min.js','jquery-ui.min.css']
