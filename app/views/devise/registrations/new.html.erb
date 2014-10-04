@@ -6,40 +6,42 @@
   <%= f.email_field :email, autofocus: true %></div>
   
    
-  <ul class="signup-orbit" data-orbit>
+  <ul data-orbit>
     <li data-orbit-slide="headline-1">
-      <div>
-        <div><%= f.label :game %><br />
+      <div class='orbit-section'>
+        <div><h2>WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?</h2><br />
         <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %></div>
-        <!-- Play Schedule -->
+        <div><h2>WHAT IS YOUR PLAY SCHEDULE?</h2><br />
+        </div>
       </div>
     </li>
     <li data-orbit-slide="headline-2">
-      <div>
-        <div><%= f.label :personal_rank %><br />
+      <div class='orbit-section'>
+        <h2>WHAT IS YOUR GAMING STYLE?</h2>
+        <div><h3>RANK YOURSELF</h3><br />
         <div class='slider' data-target='user_personal_rank'></div>
         <%= f.hidden_field :personal_rank, value: 50 %></div>
         
         
-        <div><%= f.label :mic_style %><br />
+        <div><h3>MY MIC STYLE</h3><br />
         <div class='slider' data-target='user_mic_style'></div>
         <%= f.hidden_field :mic_style, value: 50 %></div>
         
         
-        <div><%= f.label :play_style %><br />
+        <div><h3>MY PLAY STYLE</h3><br />
         <div class='slider' data-target='user_play_style'></div>
         <%= f.hidden_field :play_style, value: 50 %></div>
       </div>
     </li>
     <li data-orbit-slide="headline-3">
-      <div>
-        <div id='traits' class='tag_checkboxes'><%= f.label :traits %><br />
+      <div class='orbit-section'>
+        <div id='traits' class='tag_checkboxes'><h2>WHEN I PLAY I LIKE TO:</h2><br />
         <% Trait.where(user_created: false).each do |trait| %>
           <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
           <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
         <% end %></div>
 
-        <div id='match_traits' class='tag_checkboxes'><%= f.label :match_traits %><br />
+        <div id='match_traits' class='tag_checkboxes'><h2>WHAT IS YOUR IDEAL PARTNER'S GAMING STYLE?</h2><br />
         <% MatchTrait.where(user_created: false).each do |match_trait| %>
           <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
           <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
@@ -47,20 +49,23 @@
       </div>
     </li>
     <li data-orbit-slide='headline-4'>
-      <div>
-        <div id='outside_activites' class='tag_checkboxes'><%= f.label :outside_activites %><br />
+      <div class='orbit-section'>
+        <h2>TELL US ABOUT YOURSELF</h2>
+        <div id='outside_activites' class='tag_checkboxes'>
+          <h3>OUTSIDE OF GAMING I LIKE TO:</h3><br />
         <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
           <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
           <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
         <% end %></div>
         
-        <div><%= f.label :desc_words %><br />
+        <div><h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
         <%= f.text_field :desc_words %></div>  
         
       </div>
     </li>
     <li data-orbit-slide='headline-5'>
-      <div>
+      <div class='orbit-section'>
+        <h2>TELL US ABOUT YOURSELF</h2>
         <div><%= f.label :gamertag %><br />
         <%= f.text_field :gamertag %></div>
         

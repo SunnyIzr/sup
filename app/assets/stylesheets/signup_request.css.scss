@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup-view{
-  .signup-orbit{
+  background-color: #E3E3E3;
+  ul{
     margin-top: 100px;
     height: 400px;
+    text-align: center;
+    li{
+      .orbit-section{
+        width:90%;
+        margin: 0 auto;
+        margin-top: 5%;
+      }
+    }
   }
 }
