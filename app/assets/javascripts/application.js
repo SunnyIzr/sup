@@ -17,4 +17,4 @@
 //= require jquery-ui.min
 //= require_tree .
 
-// $(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation(); });
