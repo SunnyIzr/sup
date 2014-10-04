@@ -34,13 +34,13 @@
     <li data-orbit-slide="headline-3">
       <div>
         <div id='traits' class='tag_checkboxes'><%= f.label :traits %><br />
-        <% Trait.all.each do |trait| %>
+        <% Trait.where(user_created: false).each do |trait| %>
           <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
           <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
         <% end %></div>
 
         <div id='match_traits' class='tag_checkboxes'><%= f.label :match_traits %><br />
-        <% MatchTrait.all.each do |match_trait| %>
+        <% MatchTrait.where(user_created: false).each do |match_trait| %>
           <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
           <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
         <% end %></div>
@@ -49,7 +49,7 @@
     <li data-orbit-slide='headline-4'>
       <div>
         <div id='outside_activites' class='tag_checkboxes'><%= f.label :outside_activites %><br />
-        <% OutsideActivity.all.each do |outside_activity| %>
+        <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
           <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
           <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
         <% end %></div>
