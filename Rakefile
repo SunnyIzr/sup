@@ -42,7 +42,8 @@ end
 
 desc 'Seed Database with Users'
 task 'db:seed_users' => :environment do
-  10000.times do
+  puts "Now seeding database with 10k users..."
+  10000.times do |i|
     u = User.new
     u.username = Faker::Internet.user_name
     u.email = Faker::Internet.email
@@ -61,6 +62,7 @@ task 'db:seed_users' => :environment do
     u.outside_activity_ids = [*1..20].shuffle[0..(Random.rand(10) + 1)]
     u.time_slot_ids = [*1..168].shuffle[0..25]
     u.save
+    puts "User#{i+1} of 10,000 complete!"
   end
 end
 
