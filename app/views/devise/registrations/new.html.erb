@@ -5,90 +5,107 @@
   <%= f.hidden_field :email, value: @signup_request.email %>
   
   <h1>SQD UP</h1>
-  <ul data-orbit>
-    <li data-orbit-slide="headline-1">
-      <div class='orbit-section'>
-        <div><h2>WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?</h2><br />
-        <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %></div>
-        <div><h2>WHAT IS YOUR PLAY SCHEDULE?</h2><br />
+  <div class='banner'>
+    <ul>
+      <li>
+        <div>
+          <h2>
+            WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?
+          </h2><br />
+          <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %>
         </div>
-      </div>
-    </li>
-    <li data-orbit-slide="headline-2">
-      <div class='orbit-section'>
+        <div>
+          <h2>WHAT IS YOUR PLAY SCHEDULE?
+          </h2><br />
+        </div>
+      </li>
+      <li>
         <h2>WHAT IS YOUR GAMING STYLE?</h2>
         <div><h3>RANK YOURSELF</h3><br />
         <div class='slider' data-target='user_personal_rank'></div>
         <%= f.hidden_field :personal_rank, value: 50 %></div>
-        
-        
+      
         <div><h3>MY MIC STYLE</h3><br />
         <div class='slider' data-target='user_mic_style'></div>
         <%= f.hidden_field :mic_style, value: 50 %></div>
-        
-        
+      
         <div><h3>MY PLAY STYLE</h3><br />
         <div class='slider' data-target='user_play_style'></div>
         <%= f.hidden_field :play_style, value: 50 %></div>
-      </div>
-    </li>
-    <li data-orbit-slide="headline-3">
-      <div class='orbit-section'>
+      </li>
+      <li>
         <div id='traits' class='tag_checkboxes'><h2>WHEN I PLAY I LIKE TO:</h2><br />
-        <% Trait.where(user_created: false).each do |trait| %>
-          <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
-          <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
-        <% end %></div>
+          <% Trait.where(user_created: false).each do |trait| %>
+            <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
+            <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
+          <% end %>
+        </div>
 
         <div id='match_traits' class='tag_checkboxes'><h2>WHAT IS YOUR IDEAL PARTNER'S GAMING STYLE?</h2><br />
-        <% MatchTrait.where(user_created: false).each do |match_trait| %>
-          <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
-          <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
-        <% end %></div>
-      </div>
-    </li>
-    <li data-orbit-slide='headline-4'>
-      <div class='orbit-section'>
+          <% MatchTrait.where(user_created: false).each do |match_trait| %>
+            <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
+            <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
+          <% end %>
+        </div>
+      </li>
+      <li>
         <h2>TELL US ABOUT YOURSELF</h2>
         <div id='outside_activites' class='tag_checkboxes'>
           <h3>OUTSIDE OF GAMING I LIKE TO:</h3><br />
-        <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
-          <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
-          <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
-        <% end %></div>
+          <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
+            <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
+            <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
+          <% end %>
+        </div>
         
-        <div><h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
-        <%= f.text_field :desc_words %></div>  
-        
-      </div>
-    </li>
-    <li data-orbit-slide='headline-5'>
-      <div class='orbit-section'>
+        <div>
+          <h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
+          <%= f.text_field :desc_words %>
+        </div>  
+      </li>
+      <li>
         <h2>TELL US ABOUT YOURSELF</h2>
-        <div><%= f.label :gamertag %><br />
-        <%= f.text_field :gamertag %></div>
-        
-        <div><%= f.label :postal_code %><br />
-        <%= f.text_field :postal_code %></div>
-        
-        <div><%= f.label :date_of_birth %><br />
-        <%= f.date_field :date_of_birth %></div>
+        <div>
+          <%= f.label :gamertag %><br />
+          <%= f.text_field :gamertag %>
+        </div>
+          
+        <div>
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code %>
+        </div>
+          
+        <div>
+          <%= f.label :date_of_birth %><br />
+          <%= f.date_field :date_of_birth %>
+        </div>
 
-        <div><%= f.label :occupation %><br />
-        <%= f.text_field :occupation %></div>
-        
-        <div><%= f.label :username %><br />
-        <%= f.text_field :username %></div>
+        <div>
+          <%= f.label :occupation %><br />
+          <%= f.text_field :occupation %>
+        </div>
+          
+        <div>
+          <%= f.label :username %><br />
+          <%= f.text_field :username %>
+        </div>
 
-        <div><%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off" %></div>
+        <div>
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
 
-        <div><%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+        <div>
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
 
-        <div><%= f.submit "Sign up" %></div>
-      </div>
-  </ul>
+        <div>
+          <%= f.submit "Sign up" %>
+        </div>
+      </li>
+    </ul>
+  </div>
   
 <% end %>
 </body>

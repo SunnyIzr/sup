@@ -3,19 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup-view{
   text-align: center;
-  padding-top: 4%;
-  ul{
-    margin-top: 100px;
-    height: 400px;
-    text-align: center;
-    li{
-      .orbit-section{
-        width:90%;
-        margin: 0 auto;
-        margin-top: 5%;
-      }
-    }
-  }
   h1{
     color: #fff;
     font-size: 80px;
@@ -28,5 +15,20 @@
   }
   h3{
     color: #fff;
+  }
+  .banner { 
+    position: 
+    relative; 
+    overflow: 
+    auto;
+    ul{
+      margin: 0;
+    } 
+  }
+  .banner li { 
+    list-style: none; 
+  }
+  .banner ul li { 
+    float: left; 
   }
 }
