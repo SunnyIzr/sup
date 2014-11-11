@@ -18,16 +18,8 @@
     color: $faded-color;
   }
   .button{
-    background-color: transparent;
-    border: 4px solid $accent-color;
-    font-family: $header-font;
     font-size: 25px;
     margin-top: 5%;
     letter-spacing: 1px;
-    color: $accent-color;
-  }
-  .button:hover{
-    background-color: $accent-color;
-    color: #fff;
   }
 }

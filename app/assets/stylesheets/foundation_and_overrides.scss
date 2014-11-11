@@ -1194,3 +1194,15 @@ $anchor-font-color: $accent-color;
 // $include-html-visibility-classes: $include-html-classes;
 
 @import 'foundation';
+
+
+.button{
+  background-color: transparent;
+  border: 4px solid $accent-color;
+  font-family: $header-font;
+  color: $accent-color;
+}
+.button:hover{
+  background-color: $accent-color;
+  color: #fff;
+}

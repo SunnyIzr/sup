@@ -11,7 +11,8 @@
   }
   h2{
     color: #fff;
-    font-size: 45px;
+    font-size: 40px;
+    margin-top: 24px;
   }
   h3{
     color: #fff;
@@ -37,5 +38,82 @@
   }
   select[name='user[game_id]']{
     display: none;
+  }
+  .button{
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+  }
+  .play-schedule-select{
+    margin: 0;
+    text-align: center;
+    .day{
+      cursor: pointer;
+      display: inline-block;
+      background-color: #fff;
+      padding: 20px 10px;
+      width: 20%;
+      font-size: 20px;
+      margin: 10px 10px;
+      h4{
+        margin: 10px 5px 15px;
+      }
+      .button{
+        display: none;
+        font-size: 18px;
+        border-color: #fff;
+        background-color: #fff;
+        color: $accent-color;
+        margin-top: 25px;
+        padding: 5px 22px;
+      }
+      .slider-range{
+        display: none;
+        margin: 10px;
+        height: 4px;
+        border: none;
+        .ui-widget-header{
+          background-color: $emphasis-color;
+        }
+        .ui-slider-handle{
+          width: 15px;
+          height: 15px;
+          border-radius: 15px;
+          border: none;
+          cursor: pointer;
+        }
+      }
+      .time-range{
+        display: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+      .show-time-range{
+        display: block;
+        color: #000;
+      }
+    }
+    .day:hover{
+      color: $accent-color;
+    }
+    .selected{
+      background-color: $accent-color;
+      color: #fff;
+      h4{
+        color: #fff;
+      }
+      .button{
+        display: inline-block;
+      }
+      .time-range{
+        display: block;
+      }
+      .slider-range{
+        display: block;
+      }
+    }
+    .selected:hover{
+      color: #fff; 
+    }
   }
 }

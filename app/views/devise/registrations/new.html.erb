@@ -9,32 +9,87 @@
     <ul>
       <li>
         <div>
-          <h2>
-            WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?
-          </h2><br />
+          <h2>WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?</h2>
           <%= select_tag :game_title, options_for_select(Game.pluck(:title).uniq), class: 'game-select' %>
           <%= select_tag :platform_id, options_for_select(Platform.pluck(:name,:id)), class: 'game-select' %>
           
         </div>
           <%= f.select :game_id, options_for_select(Game.pluck(:id)), class: 'hide' %>
         <div>
-          <h2>WHAT IS YOUR PLAY SCHEDULE?
-          </h2><br />
+          <h2>WHAT IS YOUR PLAY SCHEDULE?</h2>
+          <div class='play-schedule-select'>
+            <div class='day'>
+              <h4>MONDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>TUESDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>WEDNESDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>THURSDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>FRIDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>SATURDAY</h4>
+              <div class="time-range">
+                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+              </div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+            <div class='day'>
+              <h4>SUNDAY</h4>
+              <div class="time-range">6am - 6pm</div>
+              <div class="slider-range"></div>
+              <a href='#' class='confirm-day button'> Okay </a>
+            </div>
+          </div>
         </div>
+        <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
         <h2>WHAT IS YOUR GAMING STYLE?</h2>
-        <div><h3>RANK YOURSELF</h3><br />
+        <div><h3>RANK YOURSELF</h3>
         <div class='slider' data-target='user_personal_rank'></div>
         <%= f.hidden_field :personal_rank, value: 50 %></div>
       
-        <div><h3>MY MIC STYLE</h3><br />
+        <div><h3>MY MIC STYLE</h3>
         <div class='slider' data-target='user_mic_style'></div>
         <%= f.hidden_field :mic_style, value: 50 %></div>
       
-        <div><h3>MY PLAY STYLE</h3><br />
+        <div><h3>MY PLAY STYLE</h3>
         <div class='slider' data-target='user_play_style'></div>
         <%= f.hidden_field :play_style, value: 50 %></div>
+        <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
         <div id='traits' class='tag_checkboxes'><h2>WHEN I PLAY I LIKE TO:</h2><br />
@@ -50,6 +105,7 @@
             <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
           <% end %>
         </div>
+        <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
         <h2>TELL US ABOUT YOURSELF</h2>
@@ -65,6 +121,7 @@
           <h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
           <%= f.text_field :desc_words %>
         </div>  
+        <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
         <h2>TELL US ABOUT YOURSELF</h2>
@@ -104,7 +161,7 @@
         </div>
 
         <div>
-          <%= f.submit "Sign up" %>
+          <%= f.submit "SIGN UP", class: 'button' %>
         </div>
       </li>
     </ul>

@@ -1,10 +1,14 @@
 var SignupController = {
   init: function(){
     this.activateSliders();
+    this.activateSliderRanges();
     this.activateTagCheckboxes();
     this.activateUnSlider();
     this.gameSelect();
     this.platformSelect();
+    this.directionSliderBtns();
+    this.dayTimeSelector();
+    this.confirmDayTimeSelector();
   },
   activateSliders: function(){
     $('.slider').slider({
@@ -14,18 +18,39 @@ var SignupController = {
       }
     })
   },
+  activateSliderRanges: function(){
+    $('.slider-range').slider({
+      range: true,
+      values: [6,18],
+      min: 0,
+      max: 23,
+      slide: function(e,ui){
+        SignupView.updateTimeRange($(this).parent().find('.time-range'),ui.values)
+      }
+    })    
+  },
   activateTagCheckboxes: function(){
    $('.tag_checkboxes').buttonset() 
   },
   activateUnSlider: function(){
-    $('.banner').unslider({
+    SignupController.slider = $('.banner').unslider({
       speed: 500,               //  The speed to animate each slide (in milliseconds)
       delay: 99999999999999999,              //  The delay between slide animations (in milliseconds)
       complete: function() {},  //  A function that gets called after every slide animation
       keys: true,               //  Enable keyboard (left, right) arrow shortcuts
       dots: true,               //  Display dot navigation
       fluid: false              //  Support responsive design. May break non-responsive designs
-    });
+    }).data('unslider');
+  },
+  directionSliderBtns: function(){
+    $('.unslider-arrow').click(function(e){
+      dir = $(this).data('direction')
+      if ( dir == 'next'){
+        SignupController.slider.next()
+      } else if ( dir == 'prev' ){
+        SignupController.slider.prev()
+      }
+    })
   },
   gameSelect: function(){
     $("select[name='game_title']").change(function(e){
@@ -36,7 +61,21 @@ var SignupController = {
     $("select[name='platform_id']").change(function(e){
       SignupModel.getGame();
     })
-  }
+  },
+  dayTimeSelector: function(){
+    $('.play-schedule-select .day').click(function(e){
+      $(this).addClass('selected')
+      $(this).off()
+    })
+  },
+  confirmDayTimeSelector: function(){
+    $('.confirm-day').click(function(e){
+      e.preventDefault();
+      $($(this).parent()).removeClass('selected')
+      $($(this).parent()).find('.time-range').addClass('show-time-range')
+    })
+  },
+  slider: null
 }
 
 var SignupModel = {
@@ -56,6 +95,15 @@ var SignupModel = {
       gameId = res.id
       SignupView.updateGame(gameId)
     })
+  },
+  getTime: function(value){
+    if(value == 0){
+      return '12am'
+    } else if (value <= 12) {
+      return value + 'am'
+    } else {
+      return (value - 12) + 'pm'
+    }
   }
 }
 
@@ -73,5 +121,10 @@ var SignupView = {
   },
   updateGame: function(gameId){
     $("select[name='user[game_id]']").val(gameId)
+  },
+  updateTimeRange: function(el,values){
+    window.el = $(el)
+    $(el).find('#startTime').html(SignupModel.getTime(values[0]))
+    $(el).find('#endTime').html(SignupModel.getTime(values[1]))
   }
 }
