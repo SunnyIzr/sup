@@ -12,8 +12,11 @@
           <h2>
             WHAT GAME ARE YOU LOOKING FOR A BUDDY TO PLAY WITH?
           </h2><br />
-          <%= f.select :game_id, options_for_select(Game.pluck(:title,:id)) %>
+          <%= select_tag :game_title, options_for_select(Game.pluck(:title).uniq), class: 'game-select' %>
+          <%= select_tag :platform_id, options_for_select(Platform.pluck(:name,:id)), class: 'game-select' %>
+          
         </div>
+          <%= f.select :game_id, options_for_select(Game.pluck(:id)), class: 'hide' %>
         <div>
           <h2>WHAT IS YOUR PLAY SCHEDULE?
           </h2><br />

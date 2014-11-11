@@ -31,4 +31,11 @@
   .banner ul li { 
     float: left; 
   }
+  .game-select{
+    width: 30%;
+    margin: 20px;
+  }
+  select[name='user[game_id]']{
+    display: none;
+  }
 }
