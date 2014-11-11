@@ -37,8 +37,8 @@
 
 // We use these to control various global styles
 // $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-color: '#000';
+$body-font-family: $body-font;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -51,8 +51,8 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
+$primary-color: $accent-color;
+$secondary-color: $emphasis-color;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
@@ -113,7 +113,7 @@
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
+$header-font-family: $header-font;
 // $header-font-weight: 300;
 // $header-font-style: normal;
 // $header-font-color: #222;
@@ -159,7 +159,7 @@
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
-// $anchor-font-color: $primary-color;
+$anchor-font-color: $accent-color;
 // $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
 // We use these to style the <hr> element
