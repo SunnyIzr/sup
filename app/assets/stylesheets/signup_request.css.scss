@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup-view{
-  background-color: #E3E3E3;
+  text-align: center;
+  padding-top: 4%;
   ul{
     margin-top: 100px;
     height: 400px;
@@ -14,5 +15,18 @@
         margin-top: 5%;
       }
     }
+  }
+  h1{
+    color: #fff;
+    font-size: 80px;
+    font-weight: 800;
+    margin: 0 auto;
+  }
+  h2{
+    color: #fff;
+    font-size: 45px;
+  }
+  h3{
+    color: #fff;
   }
 }
