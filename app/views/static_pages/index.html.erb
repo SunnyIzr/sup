@@ -2,6 +2,14 @@
   <div id='index'>
     <h1>SQD UP</h1>
     <h2>Never Game Alone</h2>
-    <a href='#' class='button'>SQD UP</a>
+    <a href='#' class='button' data-reveal-id="signUpModal">SQD UP</a>
+  </div>
+  <div id="signUpModal" class="reveal-modal" data-reveal>
+    <a class="close-reveal-modal">&#215;</a>
+    <%= form_for @signup_request do |f| %>
+      <%= f.label 'Email' %>
+      <%= f.text_field :email %>
+      <%= f.submit %>      
+    <% end %>
   </div>
 </div>
