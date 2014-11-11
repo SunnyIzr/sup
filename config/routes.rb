@@ -8,6 +8,7 @@ Sup::Application.routes.draw do
   # User
   devise_for :users, :controllers => { :registrations => 'registrations' }
   
+  get '/games/platforms/:game_title' => 'games#platforms'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
