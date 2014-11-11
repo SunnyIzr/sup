@@ -1,4 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
+  def new
+    @signup_request = SignupRequest.find_by(hex_id: params[:hex_id])
+    build_resource({})
+    @validatable = devise_mapping.validatable?
+    if @validatable
+      @minimum_password_length = resource_class.password_length.min
+    end
+    respond_with self.resource
+  end
+   
    def create
     build_resource(sign_up_params)
     resource.desc_words = resource.desc_words.split(',')
