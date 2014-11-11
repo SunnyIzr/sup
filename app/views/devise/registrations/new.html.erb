@@ -17,78 +17,44 @@
           <%= f.select :game_id, options_for_select(Game.pluck(:id)), class: 'hide' %>
         <div>
           <h2>WHAT IS YOUR PLAY SCHEDULE?</h2>
-          <div class='play-schedule-select'>
-            <div class='day'>
-              <h4>MONDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>TUESDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>WEDNESDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>THURSDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>FRIDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>SATURDAY</h4>
-              <div class="time-range">
-                <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-              </div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-            <div class='day'>
-              <h4>SUNDAY</h4>
-              <div class="time-range">6am - 6pm</div>
-              <div class="slider-range"></div>
-              <a href='#' class='confirm-day button'> Okay </a>
-            </div>
-          </div>
+          <%= render 'play_schedule_selector' %>
         </div>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
         <h2>WHAT IS YOUR GAMING STYLE?</h2>
-        <div><h3>RANK YOURSELF</h3>
-        <div class='slider' data-target='user_personal_rank'></div>
-        <%= f.hidden_field :personal_rank, value: 50 %></div>
+        <div>
+          <h3>RANK YOURSELF</h3>
+          <p class='directions'>Are you just getting back into gaming or do you play all the time?</p>
+          <div class='slider-wrapper'>
+            <div class='slider-left'>Noob</div>
+            <div class='slider' data-target='user_personal_rank'></div>
+            <div class='slider-right'>Veteran</div>
+          </div>
+          <%= f.hidden_field :personal_rank, value: 50 %>
+        </div>
       
-        <div><h3>MY MIC STYLE</h3>
-        <div class='slider' data-target='user_mic_style'></div>
-        <%= f.hidden_field :mic_style, value: 50 %></div>
+        <div>
+          <h3>MY MIC STYLE</h3>
+          <p class='directions'>Some people like to chat it up, some keep the chatter strictly about the game - which one are you?</p>
+          <div class='slider-wrapper'>
+            <div class='slider-left'>Socialize Freely</div>
+            <div class='slider' data-target='user_mic_style'></div>
+            <div class='slider-right'>Keep it Strictly Tactical</div>
+          </div>
+          <%= f.hidden_field :mic_style, value: 50 %>
+        </div>
       
-        <div><h3>MY PLAY STYLE</h3>
-        <div class='slider' data-target='user_play_style'></div>
-        <%= f.hidden_field :play_style, value: 50 %></div>
+        <div>
+          <h3>MY PLAY STYLE</h3>
+          <p class='directions'>Do you like to mess around or do you take the game seriously?</p>
+          <div class='slider-wrapper'>
+            <div class='slider-left'>Freestyle</div>
+            <div class='slider' data-target='user_play_style'></div>
+            <div class='slider-right'>Tactical</div>
+          </div>
+          <%= f.hidden_field :play_style, value: 50 %>
+        </div>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>

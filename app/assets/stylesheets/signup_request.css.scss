@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .signup-view{
   text-align: center;
+  color: #fff;
   h1{
     color: #fff;
     font-size: 80px;
@@ -15,7 +16,11 @@
     margin-top: 24px;
   }
   h3{
+    margin-top: 25px;
+    margin-bottom: 0px;
     color: #fff;
+    font-size: 30px;
+    font-weight: 100;
   }
   .banner { 
     position: 
@@ -114,6 +119,31 @@
     }
     .selected:hover{
       color: #fff; 
+    }
+  }
+  .directions{
+    font-style: italic;
+    font-weight: 100;
+  }
+  .slider-wrapper{
+    width: 100%;
+    clear: both;
+    height: 49px;
+    .slider-left{
+      float: left;
+      width: 15%;
+    }
+    .slider-right{
+      float: left;
+      width: 15%;
+    }
+  }
+  .slider{
+    margin-bottom: 35px;
+    width: 70%;
+    float: left;
+    .ui-slider-handle{
+      cursor: pointer;
     }
   }
 }
