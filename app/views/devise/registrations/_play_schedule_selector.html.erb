@@ -1,56 +1,14 @@
 <div class='play-schedule-select'>
-  <div class='day'>
-    <h4>MONDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
+  <% @days.each do |day| %>
+    <div class='day'>
+      <h4><%= day.upcase %></h4>
+      <div class="time-range">
+        <span class='startTime'>6am</span> - <span class='endTime'>6pm</span>
+        <%= hidden_field_tag 'day[' + day + '][start_time]', 0, class: 'start_time' %>
+        <%= hidden_field_tag 'day[' + day + '][end_time]', 0, class: 'end_time' %>
+      </div>
+      <div class="slider-range"></div>
+      <a href='#' class='confirm-day button'> Okay </a>
     </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>TUESDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-    </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>WEDNESDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-    </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>THURSDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-    </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>FRIDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-    </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>SATURDAY</h4>
-    <div class="time-range">
-      <span id='startTime'>6am</span> - <span id='endTime'>6pm</span>
-    </div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
-  <div class='day'>
-    <h4>SUNDAY</h4>
-    <div class="time-range">6am - 6pm</div>
-    <div class="slider-range"></div>
-    <a href='#' class='confirm-day button'> Okay </a>
-  </div>
+  <% end %>
 </div>

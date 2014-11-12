@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def new
+    @days = %w[monday tuesday wednesday thursday friday saturday sunday]
     @signup_request = SignupRequest.find_by(hex_id: params[:hex_id])
     build_resource({})
     @validatable = devise_mapping.validatable?
@@ -10,6 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
    
    def create
+    p '*'*500
+    p params
     build_resource(sign_up_params)
     resource.desc_words = resource.desc_words.split(',')
 

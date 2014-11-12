@@ -67,7 +67,9 @@ var SignupController = {
   dayTimeSelector: function(){
     $('.play-schedule-select .day').click(function(e){
       $(this).addClass('selected')
+      
       $(this).off()
+      SignupView.updateHiddenTimeRanges(this)
     })
   },
   confirmDayTimeSelector: function(){
@@ -125,8 +127,13 @@ var SignupView = {
     $("select[name='user[game_id]']").val(gameId)
   },
   updateTimeRange: function(el,values){
-    window.el = $(el)
-    $(el).find('#startTime').html(SignupModel.getTime(values[0]))
-    $(el).find('#endTime').html(SignupModel.getTime(values[1]))
+    $(el).find('.startTime').html(SignupModel.getTime(values[0]))
+    $(el).find('.start_time').val(values[0])
+    $(el).find('.endTime').html(SignupModel.getTime(values[1]))
+    $(el).find('.end_time').val(values[1])
+  },
+  updateHiddenTimeRanges: function(el){
+    $(el).find('.start_time').val(6)
+    $(el).find('.end_time').val(18)
   }
 }

@@ -17,7 +17,7 @@
           <%= f.select :game_id, options_for_select(Game.pluck(:id)), class: 'hide' %>
         <div>
           <h2>WHAT IS YOUR PLAY SCHEDULE?</h2>
-          <%= render 'play_schedule_selector' %>
+          <%= render partial: 'play_schedule_selector', locals: {f: f} %>
         </div>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
