@@ -146,4 +146,20 @@
       cursor: pointer;
     }
   }
+  .ui-button{
+    border-radius: none !important;
+    color: #000;
+    font-weight: 100;
+    margin: 10px 15px;
+  }
+  .ui-button:hover{
+    background-color: none;
+  }
+  .ui-state-active{
+    background-color: $accent-color;
+    color: #fff;
+    border-color: $accent-color;
+    border-radius: none;
+  }
+  
 }

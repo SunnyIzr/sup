@@ -58,14 +58,18 @@
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
-        <div id='traits' class='tag_checkboxes'><h2>WHEN I PLAY I LIKE TO:</h2><br />
+        <div id='traits' class='tag_checkboxes'>
+          <h2>WHEN I PLAY I LIKE TO:</h2>
+          <p class='directions'>Pick three attributes that matter most to you when you play videogames.</p>
           <% Trait.where(user_created: false).each do |trait| %>
             <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
             <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
           <% end %>
         </div>
 
-        <div id='match_traits' class='tag_checkboxes'><h2>WHAT IS YOUR IDEAL PARTNER'S GAMING STYLE?</h2><br />
+        <div id='match_traits' class='tag_checkboxes'>
+          <h2>WHAT IS YOUR IDEAL PARTNER'S GAMING STYLE?</h2>
+          <p class='directions'>Pick three attributes that matter most to you for the type of person you are looking to play with.</p>
           <% MatchTrait.where(user_created: false).each do |match_trait| %>
             <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
             <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
@@ -76,7 +80,8 @@
       <li>
         <h2>TELL US ABOUT YOURSELF</h2>
         <div id='outside_activites' class='tag_checkboxes'>
-          <h3>OUTSIDE OF GAMING I LIKE TO:</h3><br />
+          <h3>OUTSIDE OF GAMING I LIKE TO:</h3>
+          <p class='directions'>Pick three of your interests</p>
           <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
             <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
             <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>

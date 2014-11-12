@@ -31,6 +31,8 @@ var SignupController = {
   },
   activateTagCheckboxes: function(){
    $('.tag_checkboxes').buttonset() 
+   $('.ui-corner-right').removeClass('ui-corner-right');
+   $('.ui-corner-left').removeClass('ui-corner-left')
   },
   activateUnSlider: function(){
     SignupController.slider = $('.banner').unslider({
