@@ -161,5 +161,26 @@
     border-color: $accent-color;
     border-radius: none;
   }
-  
+  .final-signup{
+    margin-top: 25px;
+    .input_field{
+      height: 40px;
+    }
+    label{
+      float: left;
+      clear: both;
+      color: #fff;
+    }
+    input{
+      margin-top: -23px;
+      float: right;
+      width: 70%;
+      clear: both;
+    }
+  }
+  .finish-form{
+    width: 100%;
+    margin-top: 79px;
+  }
 }
+
