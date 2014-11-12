@@ -4,8 +4,8 @@
       <h4><%= day.upcase %></h4>
       <div class="time-range">
         <span class='startTime'>6am</span> - <span class='endTime'>6pm</span>
-        <%= hidden_field_tag 'day[' + day + '][start_time]', 0, class: 'start_time' %>
-        <%= hidden_field_tag 'day[' + day + '][end_time]', 0, class: 'end_time' %>
+        <%= hidden_field_tag 'day[' + day + '][start_time]', '', class: 'start_time' %>
+        <%= hidden_field_tag 'day[' + day + '][end_time]', '', class: 'end_time' %>
       </div>
       <div class="slider-range"></div>
       <a href='#' class='confirm-day button'> Okay </a>
