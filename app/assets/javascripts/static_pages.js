@@ -7,3 +7,10 @@ var switchLoginSignup = function(){
     $(showEl).show();
   })
 }
+
+var closeOffCanvasFromNav = function(){
+  $('.close-offcanvas-link').click(function(e){
+    e.preventDefault();
+    $('.exit-off-canvas').click()
+  })
+}
