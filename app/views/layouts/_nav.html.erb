@@ -1,10 +1,25 @@
 <aside class="right-off-canvas-menu">
-  <div class='close-nav'><a class='close-offcanvas-link'>&#215;</a></div>
-    <ul class='off-canvas-list'>
+  <div class='close-nav'>
+    <% unless current_user.nil? %><p>Hello, <%= current_user.gamertag %></p><% end %>
+    <a class='close-offcanvas-link'>&#215;</a>
+  </div>
+  <ul class='off-canvas-list'>
+    <% if current_user.nil? %>
       <li><%= link_to 'HOME', root_path %></li>
       <li><a href="#" data-reveal-id="signUpModal">FIND NEW FRIENDS</a></li>
       <li><a href="#">ABOUT SQDUP</a></li>
       <li><a href="#">BLOG</a></li>
       <li><a href="#">CONTACT US</a></li>
-    </ul>
+    <% else %>
+      <li><%= link_to 'HOME', root_path %></li>
+      <li><a href="#">MATCHES</a></li>
+      <li><a href="#">SUPS</a></li>
+      <li><a href="#">FRIENDS</a></li>
+      <li><a href="#">MESSAGES</a></li>
+      <li><a href="#">PROFILE</a></li>
+      <li><a href="#">ABOUT US</a></li>
+      <li><a href="#">BLOG</a></li>
+      <li><a href="#">CONTACT US</a></li>
+    <% end %>
+  </ul>
 </aside>

@@ -1218,6 +1218,12 @@ $anchor-font-color: $accent-color;
     color: #000;
     font-size: 40px;
     text-align: right;
+    p{
+      float: left;
+      margin-left: 18px;
+      margin-top: 16px;
+      font-size: 19px;
+    }
     a{
       margin-right: 11px;
       color: #000;
