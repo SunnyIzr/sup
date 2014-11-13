@@ -22,9 +22,9 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
-        # respond_with resource, location: after_sign_up_path_for(resource)
-        hash = {user: User.last, game: User.last.game, platform: User.last.game.platform, time_slots: User.last.time_slots, traits: User.last.traits, match_traits: User.last.match_traits, outside_activities: User.last.outside_activities}
-        render json: hash.to_json
+        respond_with resource, location: after_sign_up_path_for(resource)
+        # hash = {user: User.last, game: User.last.game, platform: User.last.game.platform, time_slots: User.last.time_slots, traits: User.last.traits, match_traits: User.last.match_traits, outside_activities: User.last.outside_activities}
+        # render json: hash.to_json
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
