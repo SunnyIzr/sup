@@ -1196,13 +1196,13 @@ $anchor-font-color: $accent-color;
 @import 'foundation';
 
 
-.button{
+.button-trans{
   background-color: transparent;
   border: 4px solid $accent-color;
   font-family: $header-font;
   color: $accent-color;
 }
-.button:hover{
+.button-trans:hover{
   background-color: $accent-color;
   color: #fff;
 }
