@@ -1,5 +1,5 @@
 <%= form_for @signup_request do |f| %>
-  <%= f.label 'Email' %>
-  <%= f.text_field :email %>
-  <%= f.submit %>      
+  <div class='form-element'><%= f.label 'Email' %><%= f.text_field :email, placeholder: 'enter email address' %></div>
+  <div class='privacy-explanation'>Sup respects your privacy and will not share your email address.</div>
+  <div><%= f.submit "SIGN UP", class: 'button' %></div>
 <% end %>
