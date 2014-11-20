@@ -8,6 +8,11 @@ Sup::Application.routes.draw do
   # User
   devise_for :users, :controllers => { :registrations => 'registrations' }
   
+  # Match
+  resources :matches, only: [:index]
+  
+  
+  # Games
   get '/games/platforms/:game_title' => 'games#platforms'
   post '/games/find_game' => 'games#find_game'
   
