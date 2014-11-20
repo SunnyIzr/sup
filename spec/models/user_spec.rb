@@ -34,5 +34,18 @@ describe User do
     allow(MatchAlgo).to receive(:run).with(user).and_return([user2,user3,user4])
     user.generate_new_matches
     expect(user.matched_users).to match_array([user2,user3,user4])
-  end 
+  end
+  
+  it 'should return outstanding matches' do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    user3 = FactoryGirl.create(:user)
+    user4 = FactoryGirl.create(:user)
+    allow(MatchAlgo).to receive(:run).with(user).and_return([user2,user3,user4])
+    user.generate_new_matches
+    match3 = Match.where(user: user, matched_user: user4).first
+    match3.update!(ignored: true)
+    
+    expect(user.outstanding_matches).to match_array([Match.all[0],Match.all[1]])
+  end
 end

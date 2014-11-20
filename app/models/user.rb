@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
   def generate_new_matches
     MatchAlgo.run(self).each { |match| Match.create(user: self, matched_user: match)}
   end
+  
+  def outstanding_matches
+    self.matches.where(ignored: false)
+  end
 end
