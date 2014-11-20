@@ -21,5 +21,9 @@ class User < ActiveRecord::Base
   has_many :requested_friend_requests, class_name: 'FriendRequest', foreign_key: 'requester_id', dependent: :destroy
   has_many :incoming_friend_requests, class_name: 'FriendRequest', foreign_key: 'recipient_id', dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id' 
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  
+  def generate_new_matches
+    MatchAlgo.run(self).each { |match| Match.create(user: self, matched_user: match)}
+  end
 end

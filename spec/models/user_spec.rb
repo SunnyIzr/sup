@@ -25,4 +25,14 @@ describe User do
   it {should have_many(:incoming_friend_requests)}
   it {should have_many(:friendships)}
   it {should have_many(:inverse_friendships)}
+  
+  it 'should create 3 new matches from MatchAlgo' do
+    user = FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user)
+    user3 = FactoryGirl.create(:user)
+    user4 = FactoryGirl.create(:user)
+    allow(MatchAlgo).to receive(:run).with(user).and_return([user2,user3,user4])
+    user.generate_new_matches
+    expect(user.matched_users).to match_array([user2,user3,user4])
+  end 
 end
