@@ -3,4 +3,8 @@ class FriendshipsController < ApplicationController
     @user = current_user
     @friendships = @user.friendships
   end
+  def show
+    @friendship = Friendship.find(params[:id])
+    @friend = @friendship.friend
+  end
 end
