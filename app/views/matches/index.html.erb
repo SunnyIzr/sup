@@ -1,7 +1,7 @@
 <div id='matches'>
   <h2>Here Are Your Matches:</h2>
   <ul id='match-list'>
-    <% @matches.each do |match| %>
+    <% @matches.each_with_index do |match,index| %>
     <li class='small-12 large-4 columns'>
       <div class='match-container'>
         <h2><%= match.username %><h2>
@@ -23,7 +23,10 @@
           <p><%= outside_activity.description %></p>
           <% end %>
         </div>
-        <a class='button' href='#'>SUP</a>
+        <%= form_for @friend_requests[index], url: friend_requests_path do |f| %>
+          <%= f.hidden_field :recipient_id, value: match.id %>
+          <%= f.submit 'SUP', class: 'button' %>
+        <% end %>
       </div>
     </li>
     <% end %>
