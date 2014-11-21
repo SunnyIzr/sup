@@ -18,7 +18,7 @@
         <a class="right-off-canvas-toggle" href="#" ><i class="fa fa-bars"></i></a>
         <%= render 'layouts/nav' %>
         <div class='row'>
-        <div id='logo' <%= 'class=hide' if current_page?(root_path) %> ><h1>SQD UP</h1></div>
+        <div id='logo' <%= 'class=hide' if current_page?(root_path) || current_page?(notifications_path) %> ><h1>SQD UP</h1></div>
           <%= yield %>
         </div>
         <a class="exit-off-canvas"></a>

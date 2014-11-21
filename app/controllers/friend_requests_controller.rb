@@ -3,7 +3,7 @@ class FriendRequestsController < ApplicationController
     @friend_request = FriendRequest.create(friend_request_params)
     @friend_request.requester = current_user
     if @friend_request.save
-      redirect_to root_path
+      redirect_to notifications_path
     else
       render text: 'ERROR'
     end
@@ -21,7 +21,7 @@ class FriendRequestsController < ApplicationController
   def accept
     @friend_request = FriendRequest.find(params[:id])
     @friend_request.update!(accepted: true)
-    redirect_to root_path
+    redirect_to notifications_path
   end
   
   def decline

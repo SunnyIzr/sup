@@ -1,5 +1,6 @@
 Sup::Application.routes.draw do
   root 'static_pages#index'
+  get '/:notifications' => 'static_pages#index', as: :notifications
   
   
   # SignupRequest
