@@ -7,7 +7,7 @@ module FriendRequestActivity
   extend self
   def activity(user)
     activity = sent_activity(user) + inc_activity(user)
-    activity.sort_by{ |fr| fr.updated_at }
+    activity.sort_by{ |fr| fr[:updated_at] }.reverse
   end
   
   def sent_activity(user)
