@@ -1,0 +1,43 @@
+<div id='friend-request-details'>
+  <h2>Match details</h2>
+  <div class='match-detail-container'>
+    <h3><%= @requester.username %></h3>
+    
+    <div class='game-info'>
+      <div class='game-title'>
+        <em>GAME:</em> <%= @requester.game.title %>
+      </div>
+      <div class='platform-title'>
+        <em>PLATFORM:</em> <%= @requester.game.platform %>
+      </div>
+    </div>
+    
+    <div class='basic-info'>
+      <div>
+        <em>OCCUPATION:</em> <%= @requester.occupation %>
+      </div>
+      <div>
+        <em>AGE:</em> <%= @requester.age %>
+      </div>
+      <div>
+        <em>LOCATION:</em> <%= @requester.location %>
+      </div>
+    </div>
+    
+    <div class='interests-and-style'>
+      <div>
+        <h4>GAMING STYLE</h4>
+        <% @requester.traits.each do |trait| %>
+        <p><%= trait.description %></p>
+        <% end %>
+      </div>
+      <div class='platform-title'>
+        <h4>COMMON INTERESTS</h4>
+        <% @requester.outside_activities.each do |activity| %>
+        <p><%= activity.description %></p>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
