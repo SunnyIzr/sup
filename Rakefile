@@ -43,6 +43,7 @@ end
 desc 'Seed Database with Users'
 task 'db:seed_users' => :environment do
   puts "Now seeding database with 10k users..."
+  occupations = %w[Finance Technology Legal Science Medicine Hospitality Construction]
   10000.times do |i|
     u = User.new
     u.username = Faker::Internet.user_name
@@ -55,7 +56,7 @@ task 'db:seed_users' => :environment do
     u.postal_code = Faker::Address.zip_code
     u.password = 'password'
     u.gamertag = Faker::Internet.user_name
-    u.occupation = Faker::Company.catch_phrase
+    u.occupation = occupations.sample
     u.game = Game.limit(1).order("RANDOM()").first
     u.trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
     u.match_trait_ids = [*1..10].shuffle[0..(Random.rand(6) + 1)]
