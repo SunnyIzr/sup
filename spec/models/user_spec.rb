@@ -25,6 +25,8 @@ describe User do
   it {should have_many(:incoming_friend_requests)}
   it {should have_many(:friendships)}
   it {should have_many(:inverse_friendships)}
+  it {should have_many(:incoming_messages)}
+  it {should have_many(:sent_messages)}
   
   it 'should create 3 new matches from MatchAlgo' do
     user = FactoryGirl.create(:user)
