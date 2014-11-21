@@ -45,6 +45,7 @@ task 'db:seed_users' => :environment do
   puts "Now seeding database with 10k users..."
   occupations = %w[Finance Technology Legal Science Medicine Hospitality Construction]
   10000.times do |i|
+    Faker::Config.locale = 'en-US'
     u = User.new
     u.username = Faker::Internet.user_name
     u.email = Faker::Internet.email
