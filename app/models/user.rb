@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   end
   
   def outstanding_matched_users
-    self.matches.where(ignored: false).map{|match| match.matched_user }
+    requested_friends = self.requested_friend_requests.map { |fr| fr.recipient }
+    self.matches.where(ignored: false).map{|match| match.matched_user }.select{|match| !requested_friends.include?(match) }
   end
   
   def age
