@@ -4,7 +4,7 @@
   <% @friendships.each do |friendship| %>
     <li>
       <div class="details">
-        <h3><a href="#"><%= friendship.friend.username %></a></h3>
+        <h3><%= link_to friendship.friend.username, friendship_path(friendship) %></h3>
         <p><em>Platform:</em> <%= friendship.friend.game.title %></p>
         <p><em>Game:</em> <%= friendship.friend.game.platform.name %></p>
       </div>
