@@ -41,4 +41,9 @@ class User < ActiveRecord::Base
     geo = Geokit::Geocoders::GoogleGeocoder.geocode(self.postal_code)
     "#{geo.city}, #{geo.state}"
   end
+  
+  def friend_requests
+    friend_requests = self.incoming_friend_requests + self.requested_friend_requests
+    friend_requests.sort_by {|fr| fr.updated_at }
+  end
 end
