@@ -1,0 +1,24 @@
+#friendships{
+  text-align: center;
+  list-style: none;
+  .friend-list-body {
+    background: #fff;
+    text-align:left;
+    padding: 20px 45px;
+    list-style: none;
+    margin: 0;
+    li{
+      padding: 15px;
+      margin: 0;
+      border-bottom: 2px solid black;
+      p{
+        float: left;
+        width: 200px;
+      }
+      em{
+        font-style: normal;
+        font-weight:600;
+      }
+    }
+  }
+}

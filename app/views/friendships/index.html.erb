@@ -1,0 +1,18 @@
+<div id='friendships'>
+  <h2>Friend List</h2>
+  <ul class='friend-list-body'>
+  <% @friendships.each do |friendship| %>
+    <li>
+      <div class="details">
+        <h3><a href="#"><%= friendship.friend.username %></a></h3>
+        <p><em>Platform:</em> <%= friendship.friend.game.title %></p>
+        <p><em>Game:</em> <%= friendship.friend.game.platform.name %></p>
+      </div>
+      <div class="actions">
+        <i class="fa fa-envelope fa-2x md-trigger" data-modal="modal-1"></i>
+        <i class="fa fa-trash fa-2x md-trigger" data-modal="modal-2"></i>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+</div>
