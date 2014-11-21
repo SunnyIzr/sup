@@ -47,7 +47,7 @@ task 'db:seed_users' => :environment do
   10000.times do |i|
     Faker::Config.locale = 'en-US'
     u = User.new
-    u.username = Faker::Internet.user_name
+    u.username = Faker::Internet.user_name[0..7]
     u.email = Faker::Internet.email
     u.personal_rank = Random.rand(101)
     u.mic_style = Random.rand(101)
