@@ -8,5 +8,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation,:email, :game_id, :personal_rank, :mic_style, :play_style, :desc_words, :date_of_birth, :gamertag, :occupation, :username, :postal_code, { trait_ids: []}, { match_trait_ids: []}, { outside_activity_ids: []} ) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :username, :email, :password, :remember_me) }
   end
 end
