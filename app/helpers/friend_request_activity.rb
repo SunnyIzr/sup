@@ -1,7 +1,7 @@
 # This module is responsible for producing an array of sup request activity for a given user:
 # - INPUT: an instance of a User model
 # - OUTPUT: an array of hashes sorted by date
-  # - HASH: {:date,:type,:matched_user,:accepted}
+  # - HASH: {:date,:friend_request_id,:type,:matched_user,:accepted}
 
 module FriendRequestActivity
   extend self
@@ -17,6 +17,7 @@ module FriendRequestActivity
       hash = {}
       hash[:date] = friend_request.updated_at
       hash[:type] = :sent
+      hash[:friend_request] = friend_request
       hash[:matched_user] = friend_request.recipient
       hash[:accepted] = friend_request.accepted
       activity << hash 
@@ -31,6 +32,7 @@ module FriendRequestActivity
       hash = {}
       hash[:date] = friend_request.updated_at
       hash[:type] = :received
+      hash[:friend_request] = friend_request
       hash[:matched_user] = friend_request.requester
       hash[:accepted] = friend_request.accepted
       activity << hash 

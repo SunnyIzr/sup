@@ -35,7 +35,7 @@
     <p>
     <% if activity[:type] == :received %>
       <% if activity[:accepted] == false %>
-        <a href="#"><%= activity[:matched_user].username %></a> sent you a Squad Up request!
+        <%= link_to activity[:matched_user].username, friend_request_path(activity[:friend_request]) %> sent you a Squad Up request!
       <% elsif activity[:accepted] == true %>
         You accepted <a href="#"><%= activity[:matched_user].username %></a>'s Squad Up request!
       <% end %>
