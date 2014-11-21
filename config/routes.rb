@@ -13,6 +13,8 @@ Sup::Application.routes.draw do
   
   # FriendRequest
   resources :friend_requests, only: [:create,:show]
+  get '/friend_requests/:id/accept' => 'friend_requests#accept', as: :accept_friend_request
+  get '/friend_requests/:id/decline' => 'friend_requests#decline', as: :decline_friend_request
   
   # Games
   get '/games/platforms/:game_title' => 'games#platforms'

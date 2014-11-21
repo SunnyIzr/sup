@@ -18,6 +18,18 @@ class FriendRequestsController < ApplicationController
     end
   end
   
+  def accept
+    @friend_request = FriendRequest.find(params[:id])
+    @friend_request.update!(accepted: true)
+    redirect_to root_path
+  end
+  
+  def decline
+    @friend_request = FriendRequest.find(params[:id])
+    @friend_request.destroy
+    redirect_to root_path
+  end
+  
   private
   def friend_request_params
     params.require(:friend_request).permit(:recipient_id)
