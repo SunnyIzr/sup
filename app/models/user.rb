@@ -44,6 +44,6 @@ class User < ActiveRecord::Base
   
   def friend_requests
     friend_requests = self.incoming_friend_requests + self.requested_friend_requests
-    friend_requests.sort_by {|fr| fr.updated_at }
+    friend_requests.sort_by {|fr| fr.updated_at }.reverse
   end
 end

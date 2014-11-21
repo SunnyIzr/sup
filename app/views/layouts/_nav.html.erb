@@ -31,19 +31,19 @@
 <div id="notificationContainer">
   <div id="notificationTitle">Notifications</div>
   <div id="notificationsBody" class="notifications">
-  <% FriendRequestActivity.activity(current_user).each do |activity| %>
+  <% current_user.friend_requests do |friend_request| %>
     <p>
-    <% if activity[:type] == :received %>
-      <% if activity[:accepted] == false %>
-        <%= link_to activity[:matched_user].username, friend_request_path(activity[:friend_request]) %> sent you a Squad Up request!
-      <% elsif activity[:accepted] == true %>
-        You accepted <a href="#"><%= activity[:matched_user].username %></a>'s Squad Up request!
+    <% if friend_request.recipient == current_user %>
+      <% if friend_request.accepted %>
+        You accepted <a href="#"><%= friend_request.requester.username %></a>'s Squad Up request!
+      <% else %>
+        <%= link_to friend_request.requester.username, friend_request_path(friend_request) %> sent you a Squad Up request!
       <% end %>
-    <% elsif activity[:type] = :sent %>
-      <% if activity[:accepted] == false %>
-        You sent <a href="#"><%= activity[:matched_user].username %></a> a Squad Up request!
-      <% elsif activity[:accepted] == true %>
-        <a href="#"><%= activity[:matched_user].username %></a> accepted your Squad Up request!
+    <% elsif friend_request.requester == current_user %>
+      <% if friend_request.accepted %>
+        <a href="#"><%= friend_request.recipient.username %></a> accepted your Squad Up request!
+      <% else %>
+        You sent <a href="#"><%= friend_request.recipient.username %></a> a Squad Up request!
       <% end %>
     <% end %>
     </p>
