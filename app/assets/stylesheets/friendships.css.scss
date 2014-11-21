@@ -19,6 +19,16 @@
         font-style: normal;
         font-weight:600;
       }
+      .actions{
+        float: right;
+        i{
+          color: #000;
+          margin-left:15px;
+        }
+      }
+      .clear{
+        clear: both;
+      }
     }
   }
 }
