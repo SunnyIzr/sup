@@ -27,6 +27,7 @@
 
 
 
+<% unless current_user.nil? %>
 <div id="notificationContainer">
   <div id="notificationTitle">Notifications</div>
   <div id="notificationsBody" class="notifications">
@@ -49,3 +50,4 @@
   <% end %>
   </div>
 </div>
+<% end %>
