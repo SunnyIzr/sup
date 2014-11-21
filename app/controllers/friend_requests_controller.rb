@@ -1,7 +1,5 @@
 class FriendRequestsController < ApplicationController
   def create
-    p '*'*100
-    p 'running create'
     @friend_request = FriendRequest.create(friend_request_params)
     @friend_request.requester = current_user
     if @friend_request.save
