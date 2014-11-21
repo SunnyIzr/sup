@@ -11,6 +11,8 @@ Sup::Application.routes.draw do
   # Match
   resources :matches, only: [:index]
   
+  # FriendRequest
+  resources :friend_requests, only: [:create]
   
   # Games
   get '/games/platforms/:game_title' => 'games#platforms'
