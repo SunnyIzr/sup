@@ -12,7 +12,7 @@ Sup::Application.routes.draw do
   resources :matches, only: [:index]
   
   # FriendRequest
-  resources :friend_requests, only: [:create]
+  resources :friend_requests, only: [:create,:show]
   
   # Games
   get '/games/platforms/:game_title' => 'games#platforms'

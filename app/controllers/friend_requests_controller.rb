@@ -9,6 +9,10 @@ class FriendRequestsController < ApplicationController
     end
   end
   
+  def show
+    @friend_request = FriendRequest.find(params[:id])
+  end
+  
   private
   def friend_request_params
     params.require(:friend_request).permit(:recipient_id)
