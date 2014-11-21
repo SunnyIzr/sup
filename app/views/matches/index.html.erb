@@ -2,8 +2,29 @@
   <h2>Here Are Your Matches:</h2>
   <ul id='match-list'>
     <% @matches.each do |match| %>
-    <li>
-      <h2><%= match.matched_user%><h2>
+    <li class='small-12 large-4 columns'>
+      <div class='match-container'>
+        <h2><%= match.username %><h2>
+        <div class='sep'></div>
+        <div class='key-match-data'>
+          <p><em>OCCUPATION:</em> <%= match.occupation %></p>
+          <p><em>AGE:</em> <%= match.age %></p>
+          <p><em>LOCATION:</em> <%= match.location %></p>
+        </div>
+        <div class='gaming-style'>
+          <h3>GAMING STYLE</h3>
+          <% match.traits[0..2].each do |trait| %>
+          <p><%= trait.description %></p>
+          <% end %>
+        </div>
+        <div class='common-interests'>
+          <h3>COMMON INTERESTS</h3>
+          <% match.outside_activities[0..2].each do |outside_activity| %>
+          <p><%= outside_activity.description %></p>
+          <% end %>
+        </div>
+        <a class='button' href='#'>SUP</a>
+      </div>
     </li>
     <% end %>
   </ul>
