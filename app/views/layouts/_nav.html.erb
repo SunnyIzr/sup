@@ -28,10 +28,11 @@
 
 
 <% unless current_user.nil? %>
+hello <%= current_user%>
 <div id="notificationContainer">
   <div id="notificationTitle">Notifications</div>
   <div id="notificationsBody" class="notifications">
-  <% current_user.friend_requests do |friend_request| %>
+  <% current_user.friend_requests.each do |friend_request| %>
     <p>
     <% if friend_request.recipient == current_user %>
       <% if friend_request.accepted %>
