@@ -1,0 +1,82 @@
+#friend-request-details{
+  text-align: center;
+  .match-detail-container{
+    background-color: #fff;
+    width: 80%;
+    margin: 0 auto;
+    padding: 25px;
+    h3{
+      margin: 20px 10px;
+      font-size: 36px;
+    }
+    .sep{
+      width: 75%;
+      border-bottom: 5px solid #000;
+      margin: 0 auto 20px;
+    }
+    em{
+      font-style: normal;
+      font-weight: 800;
+    }
+    .game-info{
+      text-align: center;
+      width: 100%;
+      font-size: 21px;
+      .game-title{
+        width: 45%;
+        float: left;
+
+      }
+      .platform-title{
+        width: 45%;
+        float: left; 
+
+      }
+    }
+    .basic-info{
+      width: 100%;
+      margin: 25px auto 15px;
+      float: left;
+      padding-left: 11%;
+      padding-right: 5%;
+      div{
+        width: 30%;
+        float: left;
+        text-align: center;
+      }
+    }
+    .interests-and-style{
+      width: 100%;
+      div{
+        margin-bottom: 35px;
+      }
+      h4{
+        margin-bottom: 0px;
+      }
+      p{
+        margin: 0;
+      }
+    }
+    .platform-title{
+      width: 100%;
+      h4{
+        margin-bottom: 0px;
+      }
+      p{
+        margin: 0;
+      }
+    }
+  }
+  .accept-decline{
+    margin-top: 10px;
+    .button{
+      width: 45%;
+    }
+    .accept{
+      background-color: #00bd00;
+    }
+    .decline{
+      background-color: #d11d3c
+    }
+  }
+}

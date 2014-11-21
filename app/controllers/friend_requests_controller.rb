@@ -11,6 +11,11 @@ class FriendRequestsController < ApplicationController
   
   def show
     @friend_request = FriendRequest.find(params[:id])
+    if @friend_request.recipient == current_user
+      @requester = @friend_request.requester
+    else
+      redirect_to root_path
+    end
   end
   
   private

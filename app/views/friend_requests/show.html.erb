@@ -2,13 +2,13 @@
   <h2>Match details</h2>
   <div class='match-detail-container'>
     <h3><%= @requester.username %></h3>
-    
+    <div class='sep'></div>
     <div class='game-info'>
       <div class='game-title'>
         <em>GAME:</em> <%= @requester.game.title %>
       </div>
       <div class='platform-title'>
-        <em>PLATFORM:</em> <%= @requester.game.platform %>
+        <em>PLATFORM:</em> <%= @requester.game.platform.name %>
       </div>
     </div>
     
@@ -39,5 +39,10 @@
       </div>
     </div>
     
+  </div>
+  
+  <div class='accept-decline'>
+    <a href='#' class='accept button'>ACCEPT</a>
+    <a href='#' class='decline button'>DECLINE</a>
   </div>
 </div>
