@@ -42,7 +42,7 @@
   </div>
   
   <div class='accept-decline'>
-    <a href='#' class='accept button'>ACCEPT</a>
-    <a href='#' class='decline button'>DECLINE</a>
+    <%= link_to 'ACCEPT', accept_friend_request_path(@friend_request), class: 'accept button' %>
+    <%= link_to 'DECLINE', decline_friend_request_path(@friend_request), class: 'decline button' %>
   </div>
 </div>
