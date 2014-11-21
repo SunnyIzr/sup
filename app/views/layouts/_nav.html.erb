@@ -13,7 +13,7 @@
     <% else %>
       <li><%= link_to 'HOME', root_path %></li>
       <li><%= link_to 'MATCHES', matches_path %></li>
-      <li><a href="#">SUPS</a></li>
+      <li><a class='open-sups' data-target='#notificationContainer' href="#">SUPS</a></li>
       <li><a href="#">FRIENDS</a></li>
       <li><a href="#">MESSAGES</a></li>
       <li><a href="#">PROFILE</a></li>
@@ -24,3 +24,28 @@
     <% end %>
   </ul>
 </aside>
+
+
+
+<div id="notificationContainer">
+  <div id="notificationTitle">Notifications</div>
+  <div id="notificationsBody" class="notifications">
+  <% FriendRequestActivity.activity(current_user).each do |activity| %>
+    <p>
+    <% if activity[:type] == :received %>
+      <% if activity[:accepted] == false %>
+        <a href="#"><%= activity[:matched_user].username %></a> sent you a Squad Up request!
+      <% elsif activity[:accepted] == true %>
+        You accepted <a href="#"><%= activity[:matched_user].username %></a>'s Squad Up request!
+      <% end %>
+    <% elsif activity[:type] = :sent %>
+      <% if activity[:accepted] == false %>
+        You sent <a href="#"><%= activity[:matched_user].username %></a> a Squad Up request!
+      <% elsif activity[:accepted] == true %>
+        <a href="#"><%= activity[:matched_user].username %></a> accepted your Squad Up request!
+      <% end %>
+    <% end %>
+    </p>
+  <% end %>
+  </div>
+</div>
