@@ -10,7 +10,7 @@ describe MatchesController, :type => :controller do
       allow(MatchAlgo).to receive(:run).with(user).and_return(User.all[1..3])
       user.generate_new_matches
       get :index
-      expect(assigns(:matches)).to match_array(Match.all)
+      expect(assigns(:matches)).to match_array(User.all[1..3])
     end
     it 'should render :index view' do
       sign_in(user)

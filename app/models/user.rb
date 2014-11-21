@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     MatchAlgo.run(self).each { |match| Match.create(user: self, matched_user: match)}
   end
   
-  def outstanding_matches
-    self.matches.where(ignored: false)
+  def outstanding_matched_users
+    self.matches.where(ignored: false).map{|match| match.matched_user }
   end
 end

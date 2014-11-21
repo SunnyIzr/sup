@@ -46,6 +46,6 @@ describe User do
     match3 = Match.where(user: user, matched_user: user4).first
     match3.update!(ignored: true)
     
-    expect(user.outstanding_matches).to match_array([Match.all[0],Match.all[1]])
+    expect(user.outstanding_matched_users).to match_array([user2,user3])
   end
 end

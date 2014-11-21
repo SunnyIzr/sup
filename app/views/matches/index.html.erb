@@ -1,0 +1,10 @@
+<div id='matches'>
+  <h2>Here Are Your Matches:</h2>
+  <ul id='match-list'>
+    <% @matches.each do |match| %>
+    <li>
+      <h2><%= match.matched_user%><h2>
+    </li>
+    <% end %>
+  </ul>
+</div>
