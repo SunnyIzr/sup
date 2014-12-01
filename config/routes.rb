@@ -24,6 +24,11 @@ Sup::Application.routes.draw do
   # Frienships
   resources :friendships, only: [:index,:show]
   
+  # Messages
+  get '/messages/sent' => 'messages#sent', as: :sent_messages
+  get '/messages/deleted' => 'messages#deleted', as: :deleted_messages
+  resources :messages, only: [:index,:create,:show]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
