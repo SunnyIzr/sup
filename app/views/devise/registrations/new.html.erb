@@ -21,76 +21,15 @@
         <a href='#' class='unslider-arrow button first-button' data-direction='next'>NEXT</a>
       </li>
       <li>
-        <h2>WHAT IS YOUR GAMING STYLE?</h2>
-        <div>
-          <h3>RANK YOURSELF</h3>
-          <p class='directions'>Are you just getting back into gaming or do you play all the time?</p>
-          <div class='slider-wrapper'>
-            <div class='slider-left'>Noob</div>
-            <div class='slider' data-target='user_personal_rank'></div>
-            <div class='slider-right'>Veteran</div>
-          </div>
-          <%= f.hidden_field :personal_rank, value: 50 %>
-        </div>
-      
-        <div>
-          <h3>MY MIC STYLE</h3>
-          <p class='directions'>Some people like to chat it up, some keep the chatter strictly about the game - which one are you?</p>
-          <div class='slider-wrapper'>
-            <div class='slider-left'>Socialize Freely</div>
-            <div class='slider' data-target='user_mic_style'></div>
-            <div class='slider-right'>Keep it Strictly Tactical</div>
-          </div>
-          <%= f.hidden_field :mic_style, value: 50 %>
-        </div>
-      
-        <div>
-          <h3>MY PLAY STYLE</h3>
-          <p class='directions'>Do you like to mess around or do you take the game seriously?</p>
-          <div class='slider-wrapper'>
-            <div class='slider-left'>Freestyle</div>
-            <div class='slider' data-target='user_play_style'></div>
-            <div class='slider-right'>Tactical</div>
-          </div>
-          <%= f.hidden_field :play_style, value: 50 %>
-        </div>
+        <%= render partial: 'gaming_style', locals: {f: f} %>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
-        <div id='traits' class='tag_checkboxes'>
-          <h2>WHEN I PLAY I LIKE TO:</h2>
-          <p class='directions'>Pick three attributes that matter most to you when you play videogames.</p>
-          <% Trait.where(user_created: false).each do |trait| %>
-            <%= f.check_box('trait_ids', {multiple: true}, trait.id, nil) %>
-            <%= f.label 'trait_ids_' + trait.id.to_s, trait.description %>
-          <% end %>
-        </div>
-
-        <div id='match_traits' class='tag_checkboxes'>
-          <h2>WHAT IS YOUR IDEAL PARTNER'S GAMING STYLE?</h2>
-          <p class='directions'>Pick three attributes that matter most to you for the type of person you are looking to play with.</p>
-          <% MatchTrait.where(user_created: false).each do |match_trait| %>
-            <%= f.check_box('match_trait_ids', {multiple: true}, match_trait.id, nil) %>
-            <%= f.label 'match_trait_ids_' + match_trait.id.to_s, match_trait.description %>
-          <% end %>
-        </div>
+        <%= render partial: 'player_match_attributes', locals: {f: f} %>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>
-        <h2>TELL US ABOUT YOURSELF</h2>
-        <div id='outside_activites' class='tag_checkboxes'>
-          <h3>OUTSIDE OF GAMING I LIKE TO:</h3>
-          <p class='directions'>Pick three of your interests</p>
-          <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
-            <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
-            <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
-          <% end %>
-        </div>
-        
-        <div>
-          <h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
-          <%= f.text_field :desc_words, placeholder: 'i.e. funny, loud, caring' %>
-        </div>  
+        <%= render partial: 'more_personal_info', locals: {f: f} %>
         <a href='#' class='unslider-arrow button' data-direction='next'>NEXT</a>
       </li>
       <li>

@@ -1,0 +1,14 @@
+<h2>TELL US ABOUT YOURSELF</h2>
+<div id='outside_activites' class='tag_checkboxes'>
+  <h3>OUTSIDE OF GAMING I LIKE TO:</h3>
+  <p class='directions'>Pick three of your interests</p>
+  <% OutsideActivity.where(user_created: false).each do |outside_activity| %>
+    <%= f.check_box('outside_activity_ids', {multiple: true}, outside_activity.id, nil) %>
+    <%= f.label 'outside_activity_ids_' + outside_activity.id.to_s, outside_activity.description %>
+  <% end %>
+</div>
+
+<div>
+  <h3>LIST THREE WORDS YOUR FRIENDS WOULD USE TO DESCRIBE YOU:</h3><br />
+  <%= f.text_field :desc_words, placeholder: 'i.e. funny, loud, caring' %>
+</div>  

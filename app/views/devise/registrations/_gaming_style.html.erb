@@ -1,0 +1,33 @@
+<h2>WHAT IS YOUR GAMING STYLE?</h2>
+<div>
+  <h3>RANK YOURSELF</h3>
+  <p class='directions'>Are you just getting back into gaming or do you play all the time?</p>
+  <div class='slider-wrapper'>
+    <div class='slider-left'>Noob</div>
+    <div class='slider' data-target='user_personal_rank'></div>
+    <div class='slider-right'>Veteran</div>
+  </div>
+  <%= f.hidden_field :personal_rank, value: 50 %>
+</div>
+
+<div>
+  <h3>MY MIC STYLE</h3>
+  <p class='directions'>Some people like to chat it up, some keep the chatter strictly about the game - which one are you?</p>
+  <div class='slider-wrapper'>
+    <div class='slider-left'>Socialize Freely</div>
+    <div class='slider' data-target='user_mic_style'></div>
+    <div class='slider-right'>Keep it Strictly Tactical</div>
+  </div>
+  <%= f.hidden_field :mic_style, value: 50 %>
+</div>
+
+<div>
+  <h3>MY PLAY STYLE</h3>
+  <p class='directions'>Do you like to mess around or do you take the game seriously?</p>
+  <div class='slider-wrapper'>
+    <div class='slider-left'>Freestyle</div>
+    <div class='slider' data-target='user_play_style'></div>
+    <div class='slider-right'>Tactical</div>
+  </div>
+  <%= f.hidden_field :play_style, value: 50 %>
+</div>
