@@ -27,6 +27,7 @@ Sup::Application.routes.draw do
   # Messages
   get '/messages/sent' => 'messages#sent', as: :sent_messages
   get '/messages/deleted' => 'messages#deleted', as: :deleted_messages
+  delete '/messages/:id/archive' => 'messages#archive', as: :archive_message
   resources :messages, only: [:index,:create]
   
   # The priority is based upon order of creation: first created -> highest priority.

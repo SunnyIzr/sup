@@ -22,6 +22,12 @@ class MessagesController < ApplicationController
     redirect_to sent_messages_path
   end
   
+  def archive
+    @message = Message.find(params[:id])
+    @message.update!(deleted: true)
+    redirect_to deleted_messages_path
+  end
+  
   private
   def message_params
     params.require(:message).permit(:recipient_id, :sender_id, :subject, :body)
