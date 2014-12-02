@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :requested_friend_requests, class_name: 'FriendRequest', foreign_key: 'requester_id', dependent: :destroy
   has_many :incoming_friend_requests, class_name: 'FriendRequest', foreign_key: 'recipient_id', dependent: :destroy
   has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :all_incoming_messages, class_name: 'Message', foreign_key: 'recipient_id', dependent: :destroy
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
