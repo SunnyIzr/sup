@@ -1,0 +1,22 @@
+<div id='replayMessage-<%= message.id %>' class='message-modal reveal-modal' data-reveal>
+<a class="close-reveal-modal">&#215;</a>
+  <h2>REPLY MESSAGE</h2>
+  <%= form_for(@message, url: messages_path) do |f| %>
+ 
+  <div class='send_to form-element'>
+    <strong>TO: </strong> <%=message.sender.username %>
+    <%= f.hidden_field :recipient_id, value: message.sender.id %>
+    <%= f.hidden_field :sender_id, value: @user.id %>
+  </div>
+  
+  <div class='form-element'>
+    <%= f.text_field :subject, placeholder: 'Subject', value: "Re: #{ message.subject }" %>
+  </div>
+  
+  <div class='form-element'>
+    <%= f.text_area :body, rows: 8, placeholder: 'Message' %>
+  </div>
+
+  <div><%= f.submit "SEND", class: 'button' %></div>
+  <% end %>
+</div>

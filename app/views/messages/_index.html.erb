@@ -1,6 +1,6 @@
 <table class='list-messages'>
   <% @messages.each do |message| %>
-  <tr>
+  <tr data-reveal-id='message-<%= message.id %>'>
     <td>
       <%= current_page?(sent_messages_path) ? message.recipient.username : message.sender.username %>
     </td>
@@ -9,3 +9,10 @@
   </tr>
   <% end %>
 </table>
+
+
+<% @messages.each do |message| %>
+<%= render 'show', message: message %>
+
+<% end %>
+
