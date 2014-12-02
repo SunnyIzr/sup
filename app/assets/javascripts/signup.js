@@ -11,11 +11,15 @@ var SignupController = {
     this.confirmDayTimeSelector();
   },
   activateSliders: function(){
-    $('.slider').slider({
-      value: 50,
-      slide: function(e,ui){
-        SignupView.changeHiddenRankInput(this,ui.value)
-      }
+    
+    $('.slider').each(function(e){
+      value = $('#' + $(this).data('target')).val()
+      $(this).slider({
+        value: value,
+        slide: function(e,ui){
+          SignupView.changeHiddenRankInput(this,ui.value)
+        }
+      })
     })
   },
   activateSliderRanges: function(){
