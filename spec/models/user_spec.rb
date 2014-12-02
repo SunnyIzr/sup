@@ -46,7 +46,7 @@ describe User do
     allow(MatchAlgo).to receive(:run).with(user).and_return([user2,user3,user4])
     user.generate_new_matches
     match3 = Match.where(user: user, matched_user: user4).first
-    match3.update!(ignored: true)
+    match3.update!(actioned: true)
     
     expect(user.outstanding_matched_users).to match_array([user2,user3])
   end
