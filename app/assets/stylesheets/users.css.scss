@@ -1,3 +1,31 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#profile{
+  text-align: center;
+  .profile-link{
+    margin: 15px auto;
+    width: 100%;
+    padding: 35px 0;
+    max-width: 790px;
+    h3{
+      color: #fff;
+    }
+  }
+  .profile-link:hover{
+    background: $accent-color;
+  }
+  .friends{
+    background: #c0c0c0;
+  }
+  .play-schedule{
+    background: #5d5d5d;
+  }
+  .game-prefs{
+    background: #797979;
+  }
+  .account-details{
+    background: #474646
+  }
+}

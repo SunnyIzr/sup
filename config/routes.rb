@@ -8,6 +8,7 @@ Sup::Application.routes.draw do
   
   # User
   devise_for :users, :controllers => { :registrations => 'registrations' }
+  get '/profile' => 'users#profile', as: :profile
   
   # Match
   resources :matches, only: [:index]
