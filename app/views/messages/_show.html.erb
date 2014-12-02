@@ -5,7 +5,7 @@
   <div> <%= simple_format(message.body) %> </div>
   <% if current_page?(messages_path) %>
   <div class='button-wrapper'>
-    <a href='#' class='reply button' data-reveal-id='replayMessage-<%= message.id %>'>Reply</a>
+    <a href='#' class='reply button' data-reveal-id='replyMessage-<%= message.id %>'>Reply</a>
     <%= link_to 'Delete', archive_message_path(message), method: :delete, class: 'delete button' %>
   </div>
   <% end %>

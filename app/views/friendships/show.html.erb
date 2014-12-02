@@ -3,5 +3,7 @@
   <div class='friendship-details'>
     <%= render partial: 'matches/show', locals: {match: @friend} %>
   </div>
-  <a href='#' class='button'>MESSAGE</a>
+  <a href='#' class='button' data-reveal-id='newMessage-<%=@friend.id%>'>MESSAGE</a>
 </div>
+
+<%= render 'messages/new_to', user: @friend %>

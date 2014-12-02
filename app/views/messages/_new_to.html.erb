@@ -1,16 +1,16 @@
-<div id='replyMessage-<%= message.id %>' class='message-modal reveal-modal' data-reveal>
-<a class="close-reveal-modal">&#215;</a>
-  <h2>REPLY MESSAGE</h2>
+<div id="newMessage-<%= user.id %>" class="message-modal reveal-modal" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
+  <h2>WRITE NEW MESSAGE</h2>
   <%= form_for(Message.new, url: messages_path) do |f| %>
  
   <div class='send_to form-element'>
-    <strong>TO: </strong> <%=message.sender.username %>
-    <%= f.hidden_field :recipient_id, value: message.sender.id %>
+    <strong>TO: </strong> <%=user.username %>
+    <%= f.hidden_field :recipient_id, value: user.id %>
     <%= f.hidden_field :sender_id, value: current_user.id %>
   </div>
   
   <div class='form-element'>
-    <%= f.text_field :subject, placeholder: 'Subject', value: "Re: #{ message.subject }" %>
+    <%= f.text_field :subject, placeholder: 'Subject' %>
   </div>
   
   <div class='form-element'>
@@ -19,4 +19,5 @@
 
   <div><%= f.submit "SEND", class: 'button' %></div>
   <% end %>
+
 </div>

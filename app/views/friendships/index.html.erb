@@ -9,11 +9,16 @@
         <p><em>Game:</em> <%= friendship.friend.game.platform.name %></p>
       </div>
       <div class="actions">
-       <i class="fa fa-trash-o fa-2x"></i>
-        <i class="fa fa-envelope fa-2x"></i>
+        <i class="fa fa-trash-o fa-2x"></i>
+        <a href='#' data-reveal-id='newMessage-<%= friendship.friend.id %>'><i class="fa fa-envelope fa-2x"></i></a>
       </div>
       <div class='clear'></div>
+      
     </li>
   <% end %>
   </ul>
 </div>
+
+<% @friendships.each do |friendship| %>
+  <%= render 'messages/new_to', user: friendship.friend %>
+<% end %>
