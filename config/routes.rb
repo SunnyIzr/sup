@@ -10,6 +10,8 @@ Sup::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
   get '/profile' => 'users#profile', as: :profile
   get '/edit-account-details' => 'users#edit_account_details', as: :edit_account_details
+  get '/edit-play-schedule' => 'users#edit_play_schedule', as: :edit_play_schedule
+  patch '/update-play-schedule' => 'users#update_play_schedule', as: :update_play_schedule
   resources :users, only: [:update]
   
   # Match

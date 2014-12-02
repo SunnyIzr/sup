@@ -1,0 +1,8 @@
+<div class='signup-view'>
+  <%= form_for(current_user, url: update_play_schedule_path, method: 'patch') do |f| %>
+  <%= render 'devise/registrations/play_schedule_selector'%>
+  <div class='finish-form'>
+    <%= f.submit "SAVE", class: 'button' %>
+  </div>
+  <% end %>
+</div>
