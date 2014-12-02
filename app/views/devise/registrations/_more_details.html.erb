@@ -1,0 +1,38 @@
+<h2>TELL US ABOUT YOURSELF</h2>
+<div class='final-signup'>
+  <div class='input_field'>
+    <%= f.label :gamertag, "What's your gamer tag?" %>
+    <%= f.text_field :gamertag, placeholder: 'Your gamertag' %>
+  </div>
+    
+  <div class='input_field'>
+    <%= f.label :postal_code, "What's your zip code?" %>
+    <%= f.text_field :postal_code, placeholder: 'Your zip code' %>
+  </div>
+    
+  <div class='input_field'>
+    <%= f.label :date_of_birth, "What's your date of birth?" %>
+    <%= f.date_field :date_of_birth %>
+  </div>
+
+  <div class='input_field'>
+    <%= f.label :occupation, "What's your occupation?" %>
+    <%= f.text_field :occupation, placeholder: 'Your occupation' %>
+  </div>
+  <% if current_page?(new_user_registration_path) %>  
+  <div class='input_field'>
+    <%= f.label :username, "Create a SqdUp username" %>
+    <%= f.text_field :username, placeholder: 'Username' %>
+  </div>
+
+  <div class='input_field'>
+    <%= f.label :password, 'Create a SqdUp password' %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class='input_field'>
+    <%= f.label :password_confirmation, 'Re-enter SqdUp Password' %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <% end %>
+</div>

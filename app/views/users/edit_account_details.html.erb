@@ -1,0 +1,8 @@
+<div class='signup-view'>
+  <%= form_for(current_user, url: user_path(current_user), method: 'patch') do |f| %>
+  <%= render 'devise/registrations/more_details', f: f %>
+  <div class='finish-form'>
+    <%= f.submit "SAVE", class: 'button' %>
+  </div>
+  <% end %>
+</div>

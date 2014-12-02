@@ -9,6 +9,8 @@ Sup::Application.routes.draw do
   # User
   devise_for :users, :controllers => { :registrations => 'registrations' }
   get '/profile' => 'users#profile', as: :profile
+  get '/edit-account-details' => 'users#edit_account_details', as: :edit_account_details
+  resources :users, only: [:update]
   
   # Match
   resources :matches, only: [:index]
