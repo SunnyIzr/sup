@@ -12,6 +12,7 @@ Sup::Application.routes.draw do
   get '/edit-account-details' => 'users#edit_account_details', as: :edit_account_details
   get '/edit-play-schedule' => 'users#edit_play_schedule', as: :edit_play_schedule
   patch '/update-play-schedule' => 'users#update_play_schedule', as: :update_play_schedule
+  get '/edit-game-preferences' => 'users#edit_game_preferences', as: :edit_game_preferences
   resources :users, only: [:update]
   
   # Match

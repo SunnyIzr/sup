@@ -22,8 +22,11 @@ class UsersController < ApplicationController
     redirect_to profile_path
   end
   
+  def edit_game_preferences
+  end
+  
   private
   def user_params
-    params.require(:user).permit(:gamertag,:postal_code,:date_of_birth, :occupation)
+    params.require(:user).permit(:gamertag,:postal_code,:date_of_birth,:occupation,:personal_rank,:mic_style,:play_style,{ trait_ids: []}, { match_trait_ids: []}, { outside_activity_ids: []} )
   end
 end

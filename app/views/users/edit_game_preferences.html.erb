@@ -1,0 +1,23 @@
+<div class='signup-view'>
+  <%= form_for(current_user, url: user_path(current_user), method: 'patch') do |f| %>
+  <div class='banner'>
+    <ul>
+      <li>
+        <%= render partial: 'devise/registrations/gaming_style', locals: {f: f} %>
+        <%= f.submit "SAVE", class: 'button' %>
+      </li>
+      
+      <li>
+        <%= render partial: 'devise/registrations/player_match_attributes', locals: {f: f} %>
+        <%= f.submit "SAVE", class: 'button' %>
+      </li>
+      
+      <li>
+        <%= render partial: 'devise/registrations/more_personal_info', locals: {f: f} %>
+        <%= f.submit "SAVE", class: 'button' %>
+      </li>
+      
+    </ul>
+  </div>
+  <% end %>
+</div>
