@@ -27,7 +27,7 @@ Sup::Application.routes.draw do
   # Messages
   get '/messages/sent' => 'messages#sent', as: :sent_messages
   get '/messages/deleted' => 'messages#deleted', as: :deleted_messages
-  resources :messages, only: [:index,:create,:show]
+  resources :messages, only: [:index,:create]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

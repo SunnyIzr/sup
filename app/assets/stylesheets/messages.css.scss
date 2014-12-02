@@ -1,0 +1,91 @@
+#messages{
+  text-align: center;
+  .messages-container{
+    background: #fff;
+    min-height: 500px;
+    .message-sidenav{
+      width: 22%;
+      background: #4B4B4D;
+      float: left;
+      padding: 30px;
+      height: 500px;
+      .button-trans{
+        font-size: 20px;
+        color: #fff;
+        border-color: #fff;
+        font-size: 21px;
+      }
+      ul{
+        list-style: none;
+        li{
+          font-size: 20px;
+          width: 100%;
+          text-align: right;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          a{
+            color: #fff;
+          }
+          a:hover{
+            color: $accent-color;
+          }
+        }
+      }
+      .search-bar{
+        input{
+          border-radius: 25px;
+        }
+      }
+    }
+    .messages-index{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      .list-messages{
+        float: right;
+        width: 70%;
+        margin-right: 4%;
+        border: none;
+        background: none;
+        border-collapse: collapse;
+        tr{
+          background: none;
+          
+        }
+        td{
+          border-bottom: 2px solid #000;
+        }
+        .username{width: 25%}
+        .subject{width: 50%}
+        .date{width: 20%}
+      }
+    }
+    .clear{
+      clear: both;
+    }
+  } 
+}
+
+.message-modal{
+  width: 100% !important;
+  max-width: 650px !important;
+  padding: 0 !important;
+  text-align: center;
+  h2{
+    letter-spacing: 1px;
+    background-color: $accent-color;
+    color: #fff;
+    margin: 0 auto 25px;
+    padding: 10px 0;
+    font-size: 30px;
+  }
+  .close-reveal-modal{
+    color: #fff !important;
+  }
+  .form-element{
+    text-align: center;
+    input,textarea{
+      width: 90%;
+      margin: 30px auto;
+    }
+  }
+}

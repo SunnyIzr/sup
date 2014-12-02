@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :incoming_friend_requests, class_name: 'FriendRequest', foreign_key: 'recipient_id', dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :incoming_messages, class_name: 'Message', foreign_key: 'recipient_id', dependent: :destroy
+  has_many :all_incoming_messages, class_name: 'Message', foreign_key: 'recipient_id', dependent: :destroy
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   
   def generate_new_matches
@@ -47,5 +47,13 @@ class User < ActiveRecord::Base
   def friend_requests
     friend_requests = self.incoming_friend_requests + self.requested_friend_requests
     friend_requests.sort_by {|fr| fr.updated_at }.reverse
+  end
+  
+  def incoming_messages
+    self.all_incoming_messages.where(deleted: false)
+  end
+  
+  def deleted_messages
+    self.all_incoming_messages.where(deleted: true)
   end
 end

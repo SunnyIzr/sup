@@ -1,0 +1,15 @@
+<div class='message-sidenav'>
+  <a class="button-trans button" data-reveal-id="newMessage" href="#">Compose</a>
+  <div class="nav-sidebar">
+    <ul>
+      <li><%= link_to 'INBOX', messages_path %></li>
+      <li><%= link_to 'SENT', sent_messages_path %></li>
+      <li><%= link_to 'TRASH', deleted_messages_path %></li>
+    </ul>
+  </div>
+  <div class="search-bar hide">
+    <input type="text" class="form-msg clearable" placeholder="search" />
+  </div>
+</div>
+
+<%= render 'new' %>

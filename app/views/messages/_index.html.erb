@@ -1,0 +1,11 @@
+<table class='list-messages'>
+  <% @messages.each do |message| %>
+  <tr>
+    <td>
+      <%= current_page?(sent_messages_path) ? message.recipient.username : message.sender.username %>
+    </td>
+    <td class='subject'><%= message.subject.truncate(40) %></td>
+    <td class='date'><%= message.created_at.strftime("%m/%d/%y") %></td>
+  </tr>
+  <% end %>
+</table>
