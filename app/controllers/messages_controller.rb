@@ -1,20 +1,14 @@
 class MessagesController < ApplicationController
   def index
     @messages = current_user.incoming_messages
-    @message = Message.new
-    @user = current_user
   end
   
   def sent
     @messages = current_user.sent_messages.sort_by{|message| message.created_at }.reverse
-    @message = Message.new
-    @user = current_user
   end
   
   def deleted
     @messages = current_user.deleted_messages
-    @message = Message.new
-    @user = current_user
   end
   
   def create
