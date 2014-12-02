@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
   
   def sent
-    @messages = current_user.sent_messages
+    @messages = current_user.sent_messages.sort_by{|message| message.created_at }.reverse
     @message = Message.new
     @user = current_user
   end

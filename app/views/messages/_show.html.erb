@@ -2,7 +2,7 @@
   <a class="close-reveal-modal">&#215;</a>
   <h2> <%= message.sender.username %> </h2>
   <h3> <%= message.subject %></h3>
-  <p> <%= message.body %> </p>
+  <div> <%= simple_format(message.body) %> </div>
   <% if current_page?(messages_path) %>
   <div class='button-wrapper'>
     <a href='#' class='reply button' data-reveal-id='replayMessage-<%= message.id %>'>Reply</a>

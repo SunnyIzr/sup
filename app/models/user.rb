@@ -51,10 +51,10 @@ class User < ActiveRecord::Base
   end
   
   def incoming_messages
-    self.all_incoming_messages.where(deleted: false)
+    self.all_incoming_messages.where(deleted: false).sort_by{|message| message.created_at }.reverse
   end
   
   def deleted_messages
-    self.all_incoming_messages.where(deleted: true)
+    self.all_incoming_messages.where(deleted: true).sort_by{|message| message.created_at }.reverse
   end
 end

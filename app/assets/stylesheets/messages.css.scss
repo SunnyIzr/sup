@@ -88,6 +88,10 @@
       width: 90%;
       margin: 30px auto;
     }
+    select{
+      margin: 0 auto;
+      cursor: pointer;
+    }
   }
   .send_to{
     text-align: left;
@@ -105,8 +109,8 @@
     padding: 0 30px;
     font-size: 25px;
   }
-  p{
-    padding: 30px;
+  div{
+    padding: 5px 30px 30px;
   }
   .button-wrapper{
     width: 100%;
