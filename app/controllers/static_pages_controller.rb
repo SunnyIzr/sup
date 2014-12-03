@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   end
   
   def contact
+    @signup_request = SignupRequest.new
   end
   
   def submit_contact
