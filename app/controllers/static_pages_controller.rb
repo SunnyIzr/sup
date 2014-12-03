@@ -3,4 +3,7 @@ class StaticPagesController < ApplicationController
     @signup_request = SignupRequest.new
     @notifications = params[:load] == 'load'
   end
+  
+  def about
+  end
 end
