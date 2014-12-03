@@ -1,5 +1,10 @@
-Hello:
-
-You have a new contact form submission:
-
+Hello:<br/>
+<br/>
+You have a new contact form submission:<br/>
+<strong>Name: </strong><%= @name %><br/>
+<strong>Email: </strong><%= @email %><br/>
+<strong>Subject: </strong><%= @subject %><br/>
+<strong>Message: </strong>
+<%= simple_format(@message) %><br/>
+<br/>
 Thanks.

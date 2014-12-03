@@ -3,6 +3,8 @@ Sup::Application.routes.draw do
   root 'static_pages#index'
   get '/notifications/:load' => 'static_pages#index', as: :notifications
   get '/about' => 'static_pages#about', as: :about
+  get '/contact' => 'static_pages#contact', as: :contact
+  post '/contact' => 'static_pages#submit_contact', as: :submit_contact
   
   # SignupRequest
   resources :signup_requests, only: [:create]  

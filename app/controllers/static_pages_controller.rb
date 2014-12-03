@@ -7,4 +7,13 @@ class StaticPagesController < ApplicationController
   def about
     @signup_request = SignupRequest.new
   end
+  
+  def contact
+  end
+  
+  def submit_contact
+    UserMailer.new_contact_form_entry(params[:name],params[:email],params[:subject],params[:message])
+    sleep(2)
+    redirect_to root_path
+  end
 end

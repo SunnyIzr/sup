@@ -3,6 +3,7 @@ $(document).ready(function(){
   switchLoginSignup();
   closeOffCanvasFromNav();
   openSupNotifications();
+  submitContactForm();
   if ( $('#loadNotificationModule').size() > 0) {
     setTimeout(function(){
       openSupNotificationsAndMenu()

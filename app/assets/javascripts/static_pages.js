@@ -14,3 +14,9 @@ var closeOffCanvasFromNav = function(){
     $('.exit-off-canvas').click()
   })
 }
+
+var submitContactForm = function(){
+  $('.contact-us-btn').click(function(e){
+    $('form').submit()
+  })
+}

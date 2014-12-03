@@ -1,0 +1,17 @@
+<div id='contact'>
+  <h2>SEND SQDUP A MESSAGE</h2>
+  <%= form_tag(submit_contact_path) %>
+  <%= text_field_tag :name, '', placeholder: 'Name' %>
+  <%= text_field_tag :email, '', placeholder: 'Email', required: true %>
+  <%= text_field_tag :subject, '', placeholder: 'Subject' %>
+  <%= text_area_tag :message, '', placeholder: 'Message', rows: 10, requried: true %>
+  <%= submit_tag 'SEND', class: 'contact-us-btn button', data: {'reveal-id' => 'contactConfirm' }%>
+</div>
+
+<div id="contactConfirm" class="reveal-modal" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
+  <div>
+    <h3> Thank you for contacting Sqd Up!</h3>
+    <p> We will respond to you within 24 hours. </p>
+  </div>
+</div>
