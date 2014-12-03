@@ -49,8 +49,6 @@ gem 'foundation-rails'
 
 gem 'geokit'
 
-gem 'rack-reverse-proxy', :require => 'rack/reverse_proxy'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

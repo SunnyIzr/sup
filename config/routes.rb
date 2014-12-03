@@ -5,14 +5,7 @@ Sup::Application.routes.draw do
   get '/about' => 'static_pages#about', as: :about
   get '/contact' => 'static_pages#contact', as: :contact
   post '/contact' => 'static_pages#submit_contact', as: :submit_contact
-  
-  # constraints Constraints::CustomSubdomain do
-  # constraints(Subdomain) do
-  #   get '(*path)' => 'application#blog', :constraints => {subdomain: 'blog'}
-  # end
-
-  get '/blog' => redirect("https://sqdup.herokuapp.com/blog/")
-  
+  get '/blog' => 'static_pages#blog', as: :blog
   
   # SignupRequest
   resources :signup_requests, only: [:create]  
