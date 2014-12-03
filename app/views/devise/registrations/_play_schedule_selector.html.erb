@@ -1,4 +1,6 @@
 <h2>WHAT IS YOUR PLAY SCHEDULE?</h2>
+<% if current_user.nil? %>
+
 <div class='play-schedule-select'>
   <% @days.each do |day| %>
     <div class='day'>
@@ -13,3 +15,35 @@
     </div>
   <% end %>
 </div>
+
+<% else %>
+
+<div class='play-schedule-select'>
+  <% @days.each do |day| %>
+    <% if current_user.weekdays.include?(day.capitalize) %>
+    <% start_time = current_user.time_slot_data[day.capitalize][:start_time] %>
+    <% end_time = current_user.time_slot_data[day.capitalize][:end_time] %>
+    <div class='day selected'>
+      <h4><%= day.upcase %></h4>
+      <div class="time-range">
+        <span class='startTime'><%= hour_time(start_time) %></span> - <span class='endTime'><%= hour_time(end_time) %></span>
+          <%= hidden_field_tag 'day[' + day + '][start_time]', start_time, class: 'start_time'%>
+          <%= hidden_field_tag 'day[' + day + '][end_time]', end_time, class: 'end_time' %>
+      </div>
+      <div class="slider-range" data-target='day_<%= day %>_'></div>
+    </div>
+    <% else %>
+    <div class='day'>
+      <h4><%= day.upcase %></h4>
+      <div class="time-range">
+        <span class='startTime'>6am</span> - <span class='endTime'>6pm</span>
+          <%= hidden_field_tag 'day[' + day + '][start_time]', '', class: 'start_time' %>
+          <%= hidden_field_tag 'day[' + day + '][end_time]', '', class: 'end_time' %>
+      </div>
+      <div class="slider-range"></div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<% end %>

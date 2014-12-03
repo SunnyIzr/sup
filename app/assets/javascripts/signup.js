@@ -11,7 +11,6 @@ var SignupController = {
     this.confirmDayTimeSelector();
   },
   activateSliders: function(){
-    
     $('.slider').each(function(e){
       value = $('#' + $(this).data('target')).val()
       $(this).slider({
@@ -23,15 +22,24 @@ var SignupController = {
     })
   },
   activateSliderRanges: function(){
-    $('.slider-range').slider({
-      range: true,
-      values: [6,18],
-      min: 0,
-      max: 23,
-      slide: function(e,ui){
-        SignupView.updateTimeRange($(this).parent().find('.time-range'),ui.values)
+    $('.slider-range').each(function(){
+      if ($(this).parent().hasClass('selected')){
+        startTime = $( '#' + $(this).data('target') + 'start_time').val()
+        endTime = $( '#' + $(this).data('target') + 'end_time').val()
+      } else{
+        startTime = 6
+        endTime = 18
       }
-    })    
+      $(this).slider({
+        range: true,
+        values: [startTime,endTime],
+        min: 0,
+        max: 23,
+        slide: function(e,ui){
+          SignupView.updateTimeRange($(this).parent().find('.time-range'),ui.values)
+        }
+      })
+    })  
   },
   activateTagCheckboxes: function(){
    $('.tag_checkboxes').buttonset() 

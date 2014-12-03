@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  WEEKDAY_NAMES=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -56,5 +57,22 @@ class User < ActiveRecord::Base
   
   def deleted_messages
     self.all_incoming_messages.where(deleted: true).sort_by{|message| message.created_at }.reverse
+  end
+  
+  def weekdays
+    self.time_slots.map {|time_slot| time_slot.weekday_name }.uniq
+  end
+  
+  def time_slot_data
+    data = {}
+    days = self.time_slots.map { |time_slot| time_slot.weekday }.uniq
+    days.each do |day|
+      hours = self.time_slots.where(weekday: day).pluck(:hour)
+      day_data = {}
+      day_data[:start_time] = hours.min
+      day_data[:end_time] = hours.max
+      data[WEEKDAY_NAMES[day]] = day_data
+    end
+    data
   end
 end
