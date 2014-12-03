@@ -17,4 +17,7 @@ class StaticPagesController < ApplicationController
     sleep(2)
     redirect_to root_path
   end
+  
+  def blog
+  end
 end
