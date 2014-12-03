@@ -5,5 +5,6 @@ class StaticPagesController < ApplicationController
   end
   
   def about
+    @signup_request = SignupRequest.new
   end
 end

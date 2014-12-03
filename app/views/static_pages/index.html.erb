@@ -5,24 +5,7 @@
     <a href='#' class='button-trans button' data-reveal-id="signUpModal">SQD UP</a>
   </div>
   
-  <div id="signUpModal" class="reveal-modal" data-reveal>
-    <div id='loginForm'>
-      <h2>Login</h2>
-      <a class="close-reveal-modal">&#215;</a>
-      <div class='user-form'>
-        <%= render 'devise/sessions/new' %>
-      </div>
-      <div class='signup-path'>Wanna join? Squad up <a class='switchForm' data-target='#signupForm' href='#'>here!</a></div>
-    </div>
-    <div id='signupForm'>
-      <h2>Enter your email to Squad Up</h2>
-      <a class="close-reveal-modal">&#215;</a>
-      <div class='user-form'>
-        <%= render 'signup_requests/new' %>
-      </div>
-      <div class='signup-path'>Already have an account? Sign in <a class='switchForm' data-target='#loginForm' href='#'>here!</a></div>
-    </div>
-  </div>
+  <%= render 'signup_modal' %>
 </div>
 
 <% if @notifications %>

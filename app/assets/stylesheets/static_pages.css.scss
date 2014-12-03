@@ -79,4 +79,46 @@
   }
 }
 
+#about{
+  background: #fff;
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  .about-item{
+    text-align: center;
+  }
+  .clearfix{
+    clear:both;
+  }
+  p{
+    width: 75%;
+    margin: 0 auto;
+  }
+  .about-works{
+    p{
+      width: 85%;
+    }
+  }
+  .line-sep{
+    border-top: 2px solid #000;
+    width: 45%;
+    margin: 0 auto 25px;
+  }
+  .wrapper{
+    margin-bottom: 50px;
+  }
+  .mid-header{
+    margin: 45px 0 0;
+  }
+  .subtext{
+    margin-bottom: 25px;
+    color: $faded-color;
+  }
+  #index{
+    padding: 0;
+    .button{
+      margin-top: 25px;
+    }
+  }
+}
 
