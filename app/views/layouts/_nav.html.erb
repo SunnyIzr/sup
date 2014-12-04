@@ -8,7 +8,7 @@
       <li><%= link_to 'HOME', root_path %></li>
       <li><a href="#" data-reveal-id="signUpModal">FIND NEW FRIENDS</a></li>
       <li><%= link_to 'ABOUT SQDUP', about_path %></li>
-      <li><a href="#">BLOG</a></li>
+      <li><%= link_to 'BLOG', blog_path %></li>
       <li><%= link_to 'CONTACT US', contact_path %></li>
     <% else %>
       <li><%= link_to 'HOME', root_path %></li>
@@ -18,7 +18,7 @@
       <li><%= link_to 'MESSAGES', messages_path %></li>
       <li><%= link_to 'PROFILE', profile_path %></li>
       <li><%= link_to 'ABOUT US', about_path %></li>
-      <li><a href="#">BLOG</a></li>
+      <li><%= link_to 'BLOG', blog_path %></li>
       <li><%= link_to 'CONTACT US', contact_path %></li>
       <li><%= link_to 'LOG OUT', destroy_user_session_path, method: :delete %></li>
     <% end %>
