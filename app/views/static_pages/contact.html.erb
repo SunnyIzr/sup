@@ -1,6 +1,6 @@
 <div id='contact'>
   <h2>SEND SQDUP A MESSAGE</h2>
-  <%= form_tag(submit_contact_path) %>
+  <%= form_tag(submit_contact_path, class: 'contact-form') %>
   <%= text_field_tag :name, '', placeholder: 'Name' %>
   <%= text_field_tag :email, '', placeholder: 'Email', required: true %>
   <%= text_field_tag :subject, '', placeholder: 'Subject' %>

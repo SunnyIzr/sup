@@ -17,6 +17,6 @@ var closeOffCanvasFromNav = function(){
 
 var submitContactForm = function(){
   $('.contact-us-btn').click(function(e){
-    $('form').submit()
+    $('.contact-form').submit()
   })
 }
