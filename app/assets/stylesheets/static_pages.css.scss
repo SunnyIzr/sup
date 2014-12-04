@@ -143,6 +143,40 @@
 }
 
 #blog{
+  .featured-post{
+    width: 100%;
+    height: 250px;
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 25px;
+  }
   text-align: center;
-  
+  .latest-posts{
+    text-align: left;
+    .title{
+      color: #fff;
+    }
+    .post{
+      margin-bottom: 25px;
+      .post-img{
+        width: 15%;
+        img{
+          margin-top: 25px;
+          float: left;
+          width: 100%;
+        }
+      }
+      .post-text{
+        width: 85%;
+        float: left;
+        padding-left: 25px;
+        p{
+          color: #fff;
+        }
+      }
+      .clearfix{
+        clear:both;
+      }
+    }
+  }
 }

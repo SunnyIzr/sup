@@ -1,3 +1,24 @@
 <div id='blog'>
   <h2>BLOG</h2>
+  <div class='featured-post'>
+    <h2>FEATURED POST TITLE</h2>
+  </div>
+  
+  <div class='latest-posts'>
+    <h3 class='title'>LATEST POSTS</h3>
+    
+    <% @entries.each do |entry| %>
+    <div class='post'>
+      <div class='post-img'>
+        <img src='<%= entry[:img] %>'>
+      </div>
+      <div class='post-text'>
+        <h3><%= entry[:title].upcase %></h3>
+        <p><%= entry[:body].truncate(500) %></p>
+      </div>
+      <div class='clearfix'></div>
+    </div>
+    <% end %>
+    
+  </div>
 </div>
